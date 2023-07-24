@@ -5,6 +5,9 @@
 ## CONCEITOS INICIAIS
 
 * [Aprendizado a partir de dados](conceitos-iniciais/aprendizado-a-partir-de-dados.md)
+* [Regressão](conceitos-iniciais/regressao.md)
+* [Classificação](conceitos-iniciais/classificacao.md)
+* [Função de Custo](conceitos-iniciais/funcao-de-custo.md)
 * [Tipos de Aprendizado](conceitos-iniciais/tipos-de-aprendizado/README.md)
   * [Aprendizado Supervisionado](conceitos-iniciais/tipos-de-aprendizado/aprendizado-supervisionado.md)
   * [Aprendizado não Supervisionado](conceitos-iniciais/tipos-de-aprendizado/aprendizado-nao-supervisionado.md)
@@ -27,9 +30,21 @@
 ## REDES NEURAIS E DEEP LEARNING
 
 * [Multilayer Perceptron](redes-neurais-e-deep-learning/multilayer-perceptron.md)
-* [Rede Neural Vanilla](redes-neurais-e-deep-learning/rede-neural-vanilla.md)
+* [Rede Neural Vanilla](redes-neurais-e-deep-learning/rede-neural-vanilla/README.md)
+  * [Forward Propagation](redes-neurais-e-deep-learning/rede-neural-vanilla/forward-propagation.md)
+  * [Backpropagation](redes-neurais-e-deep-learning/rede-neural-vanilla/backpropagation.md)
+* [Page 1](redes-neurais-e-deep-learning/page-1.md)
 * [Redes Convolucionais](redes-neurais-e-deep-learning/redes-convolucionais.md)
 * [Redes Recorrentes](redes-neurais-e-deep-learning/redes-recorrentes.md)
 * [Attention](redes-neurais-e-deep-learning/attention.md)
-* [Self-Attention](redes-neurais-e-deep-learning/self-attention.md)
-* [Transformers](redes-neurais-e-deep-learning/transformers.md)
+* [Transformers](redes-neurais-e-deep-learning/transformers/README.md)
+  * [Self-Attention](redes-neurais-e-deep-learning/transformers/self-attention.md)
+  * [Transformer's Encoder](redes-neurais-e-deep-learning/transformers/transformers-encoder.md)
+  * [Positional Encoding](redes-neurais-e-deep-learning/transformers/positional-encoding.md)
+  * [Transformer's Decoder](redes-neurais-e-deep-learning/transformers/transformers-decoder.md)
+  * [Embbeding Contextualizado](redes-neurais-e-deep-learning/transformers/embbeding-contextualizado.md)
+
+## Redução de DImensionalidade
+
+* [PCA](reducao-de-dimensionalidade/pca.md)
+* [t-SNE](reducao-de-dimensionalidade/t-sne.md)
