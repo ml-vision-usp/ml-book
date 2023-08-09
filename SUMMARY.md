@@ -1,8 +1,10 @@
 # Table of contents
 
+* [Overview](README.md)
+
 ## CONCEITOS INICIAIS
 
-* [Aprendizado a partir de dados](README.md)
+* [Aprendizado a partir de dados](<README (1).md>)
 * [Regressão](conceitos-iniciais/regressao.md)
 * [Classificação](conceitos-iniciais/classificacao.md)
 * [Função de Custo](conceitos-iniciais/funcao-de-custo.md)
@@ -27,6 +29,11 @@
 * [Método Holdout](consideracoes-sobre-treinamento/metodo-holdout.md)
 * [Cross Validation](consideracoes-sobre-treinamento/cross-validation.md)
 * [Métricas de Avaliação de Modelos](consideracoes-sobre-treinamento/metricas-de-avaliacao-de-modelos.md)
+
+## Redução de DImensionalidade
+
+* [PCA](reducao-de-dimensionalidade/pca.md)
+* [t-SNE](reducao-de-dimensionalidade/t-sne.md)
 
 ## TIPOS DE APRENDIZADO
 
@@ -55,8 +62,3 @@
   * [Positional Encoding](deep-learning/transformers/positional-encoding.md)
   * [Transformer's Decoder](deep-learning/transformers/transformers-decoder.md)
   * [Embbeding Contextualizado](deep-learning/transformers/embbeding-contextualizado.md)
-
-## Redução de DImensionalidade
-
-* [PCA](reducao-de-dimensionalidade/pca.md)
-* [t-SNE](reducao-de-dimensionalidade/t-sne.md)
