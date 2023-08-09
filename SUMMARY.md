@@ -4,15 +4,19 @@
 
 ## CONCEITOS INICIAIS
 
-* [Aprendizado a partir de dados](<README (1).md>)
-* [Regressão](conceitos-iniciais/regressao.md)
-* [Classificação](conceitos-iniciais/classificacao.md)
-* [Função de Custo](conceitos-iniciais/funcao-de-custo.md)
+* [Aprendizado a partir de dados](conceitos-iniciais/aprendizado-a-partir-de-dados/README.md)
+  * [Abstração do aprendizado](conceitos-iniciais/aprendizado-a-partir-de-dados/abstracao-do-aprendizado.md)
+* [Modelo linear](conceitos-iniciais/modelo-linear.md)
+* [Função de Perda](conceitos-iniciais/funcao-de-perda/README.md)
+  * [Otimização](conceitos-iniciais/funcao-de-perda/otimizacao.md)
+  * [Gradiente Descendente](conceitos-iniciais/funcao-de-perda/gradiente-descendente.md)
+  * [Máxima Variação](conceitos-iniciais/funcao-de-perda/maxima-variacao.md)
 
 ## Algoritmos básicos
 
 * [Regressão Linear](algoritmos-basicos/regressao-linear.md)
 * [Regressão Logística](algoritmos-basicos/regressao-logistica.md)
+* [Regressão Logística Multinomial](algoritmos-basicos/regressao-logistica-multinomial.md)
 * [Perceptron](algoritmos-basicos/perceptron.md)
 
 ## MAIS ALGORITMOS

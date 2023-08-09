@@ -1,0 +1,3 @@
+# Função de Perda
+
+Função de Perda é a função que nos dirá o quão ruim, para aproximar $f$, $h$ está. Essa função pode variar de caso a caso, mas a ideia central desse conceito é, de alguma forma, comparar os valores $y\_i$ --- oriundos do nosso conjunto de exemplos --- com os resultados $h(\mathbf{x}\_i) = \hat{y}\_i$ em uma expressão que esteja em função do vetor de pesos $\mathbf{w}$. O resultado dessa comparação deve corresponder à quão diferente a função alvo (desconhecida) é da função $h$, que obtemos. Assim, para encontrar a função $h$ que mais se assemelha da função alvo, deveremos buscar por valores mínimos da função de perda.

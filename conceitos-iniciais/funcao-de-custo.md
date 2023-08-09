@@ -1,2 +1,0 @@
-# Função de Custo
-

@@ -1,0 +1,7 @@
+# Máxima Variação
+
+Consideremos o vetor unitário $\vec{v}$. E uma função $f$ qualquer. A derivada direcional no sentido desse vetor é: \begin{gather\*} \dfrac{\partial }{\partial \vec{v\}}f(x) = \nabla f(x) \cdot \vec{v} = \lVert \nabla f(x) \rVert \lVert \vec{v} \rVert \cos(\alpha) = \lVert \nabla f(x) \rVert \cos(\alpha) \end{gather\*} Perceba que essa expressão assume valor máximo se e somente se $\cos(\alpha) = 1$. Ou seja, se o vetor $\vec{v}$ tem mesma direção que o vetor $\nabla f(x)$. Pela mesma justificativa, podemos concluir que a variação mais negativa ocorre quando $\vec{v} = -\dfrac{\nabla f(x)}{\lVert \nabla f(x) \rVert}$. \\
+
+Portanto, se desejarmos maximizar (Gradiente Ascendente) ou minimizar (Gradiente Descendente) uma função, podemos usar esse método. \\
+
+É válido comentar que, apesar da vantagem evidente de se usar tal método em funções côncavas (convergência ao mínimo global da função), também o utilizamos para minimizar funções de perda que não são necessariamente côncavas. Esse é o caso de Redes Neurais, por exemplo. Nesses casos, como a função não é côncava, existe a possibilidade de, no processo de `descida do gradiente'', acabarmos ficando presos em mínimos locais. Contudo, apesar disso, esse método de otimização é amplamente utilizado em Machine Learning e, inclusive, existem algumas práticas -- ou parâmetros -- que são utilizadas para tentar diminuir as ocorrências desses` aprisionamentos'' do gradiente em mínimos locais.

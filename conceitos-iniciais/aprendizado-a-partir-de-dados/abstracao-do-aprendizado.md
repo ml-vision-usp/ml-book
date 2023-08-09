@@ -1,0 +1,11 @@
+# Abstração do aprendizado
+
+Se pensarmos bem, a preferência de uma pessoa por filmes pode ser interpretada como uma função, no sentido matemático da palavra. Isto é, o fato desse indivíduo gostar ou não de um `filme x'' obedece uma função $f(\text{filme x})$. No decorrer do texto, nos referiremos à essa função $f$ como` função alvo''. Agora, de que modo um filme poderia ser transformado em parâmetro dessa função? Há diversas maneiras de responder a essa questão. \begin{itemize} \item Poderíamos representar a obra cinematográfica como sua nota em sites de crítica especializada. \item Talvez representar cada filme de acordo com uma medida arbitrária da quantidade de ação, comédia e drama que o constituem. \item Ou, simplesmente, reduzir o filme ao seus dois gêneros predominantes. \end{itemize}
+
+Independente disso, considerando os filmes que esse sujeito já assistiu e quais deles ele gostou ou não, podemos representar esses exemplos na forma dos seguintes pares de dados: $$(\textbf{x}_1, y_1) , (\textbf{x}_2, y_2), \ldots, (\textbf{x}_N, y_N)$$
+
+Sendo $\textbf{x}\_i, ; i = 1, \ldots, N$ cada filme e $y\_i, ; i = 1, \ldots, N$ uma variável indicando se a pessoa gostou ou não do filme $\textbf{x}\_i$. Perceba que estamos representando cada filme $\textbf{x}\_i$ em negrito pois, geralmente, um vídeo será representado como um vetor. Tal vetor pode conter a quantidade de ação, comédia e drama que formam o filme ou possuir os dois gêneros mais pronunciados ao longo da obra; o conteúdo do vetor $\textbf{x}\_i$ depende da maneira com a qual representaremos o filme para ser usado como entrada da função. \\
+
+Todos os problemas que resolvemos utilizando técnicas de aprendizado de máquina sem importar se os dados de entrada são imagens, filmes, gravações de áudio, planilhas financeiras, palavras ou números, seguirão esse padrão de representação em pares de dados. \\
+
+Na prática, se um problema requer Machine Learning, não conseguimos obter uma solução analítica que nos forneça a lei da função $f$. Portanto, usaremos essas técnicas de aprendizado de máquina para encontrarmos uma função $h(\textbf{x}\_i) = \hat{y}\_i$ que tenha comportamento o mais semelhante possível em relação à $f$. Isto é, tal que $\hat{y}\_i$ seja o mais próximo possível de $y\_i$, para $i = 1, 2,\ldots, N$.
