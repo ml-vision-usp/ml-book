@@ -1,2 +1,0 @@
-# Aprendizado não Supervisionado
-

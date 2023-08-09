@@ -1,6 +1,2 @@
----
-description: Landing page do livro
----
-
-# Home
+# Aprendizado a partir de dados
 

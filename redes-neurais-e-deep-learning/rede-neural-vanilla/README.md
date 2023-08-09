@@ -1,2 +1,0 @@
-# Rede Neural Vanilla
-
