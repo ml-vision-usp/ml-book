@@ -55,9 +55,9 @@
 
 ## DEEP LEARNING
 
-* [Redes Convolucionais](deep-learning/redes-convolucionais.md)
-* [Camada convolucional](deep-learning/camada-convolucional.md)
-* [Camada de pooling](deep-learning/camada-de-pooling.md)
+* [Redes Convolucionais](deep-learning/redes-convolucionais/README.md)
+  * [Camada convolucional](deep-learning/redes-convolucionais/camada-convolucional.md)
+  * [Camada de pooling](deep-learning/redes-convolucionais/camada-de-pooling.md)
 * [Redes Recorrentes](deep-learning/redes-recorrentes/README.md)
   * [Attention](deep-learning/redes-recorrentes/attention.md)
 * [Transformers](deep-learning/transformers/README.md)
