@@ -34,7 +34,7 @@
 * [Cross Validation](consideracoes-sobre-treinamento/cross-validation.md)
 * [Métricas de Avaliação de Modelos](consideracoes-sobre-treinamento/metricas-de-avaliacao-de-modelos.md)
 
-## Redução de DImensionalidade
+## Redução de Dimensionalidade
 
 * [PCA](reducao-de-dimensionalidade/pca.md)
 * [t-SNE](reducao-de-dimensionalidade/t-sne.md)
