@@ -3,7 +3,7 @@
 A diferença principal entre os conceitos de Attention e Self-Attention \citep{self-attention} é a seguinte:
 
 {% hint style="info" %}
-Quando falamos do conceito de Attention estamos tentando ``alinhar'' uma palavra na frase de saída com a palavra correspondente na frase de entrada.
+Quando falamos do conceito de Attention estamos tentando "alinhar" uma palavra na frase de saída com a palavra correspondente na frase de entrada.
 
 Agora, em Self-Attention, a ideia é fazer um embedding diferenciado de cada palavra. Esse novo embedding considera o contexto da frase para ser produzido.
 {% endhint %}
@@ -11,7 +11,7 @@ Agora, em Self-Attention, a ideia é fazer um embedding diferenciado de cada pal
 O mecanismo de Self-Attention associa pesos às palavras vizinhas em uma frase de modo que as palavras vizinhas com os maiores pesos têm maior relevância contextual em relação à palavra sendo analisada.
 \subsection{Como obter esses vetores contextualizados? Novo embedding?}
 Agora, como podemos obter esses pesos que são associados às palavras em uma frase (vetores de contexto)?
-O primeiro passo é definir um vetor $s_{ij}$ tal que:
+O primeiro passo é definir um vetor $$s_{ij}$$ tal que:
 $$
 s_{ij} = v_i \cdot v_j
 $$
