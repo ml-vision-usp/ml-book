@@ -4,11 +4,11 @@ Primeiramente, vamos considerar o caso sem Multi-headed attention. Assim, querem
 
 Assim, como comentado anteriormente, usamos as palavras presentes na sequência de três maneiras distintas, associadas à três matrizes de pesos. Portanto, usaremos a seguinte notação:
 
-- $Q_{(n \times d)} = X_{(n \times d)} W_{Q (n \times d)}$
-- $K_{(n \times d)} = X_{(n \times d)} W_{K (n \times d)}$
-- $V_{(n \times d)} = X_{(n \times d)} W_{V (n \times d)}$
+- $Q_{(n \times d)} = X^Q_{(n \times d)} W^Q_{(d \times d)}$
+- $K_{(n \times d)} = X^K_{(n \times d)} W^K_{(d \times d)}$
+- $V_{(n \times d)} = X^V_{(n \times d)} W^V_{(d \times d)}$
 
-onde $W_Q, W_K, W_V$ são matrizes de pesos treináveis.
+onde $W^Q, W^K, W^V$ são matrizes de pesos treináveis. E $X^Q, X^K, X^V$ não passam de uma notação para diferenciar os três usos da matrix de entrada $X$.
 
 Assim, primeiro relacionamos as palavras via dot product para obter os scores. Então, podemos representar esses scores como:
 $$\text{Scores} = QK^T$$
@@ -65,12 +65,55 @@ $$
 $$
 
 ## Multihead Attention
+Como já comentado, multihead attention é usado ao fazer a entrada (no caso a matriz $X$) passar em paralelo por diversos mecanismos de self-attention. A ideia é que, dessa forma, consigamos capturar várias nuances de relação semântica entre as palavras (ou tokens). Desse modo, temos:
 
-## Fator de escala do produto escalar $QK^T$
+$$
+\text{MultiHead}(X^Q, X^K, X^V) = \text{Concat}(\text{head}_1, \text{head}_2, \ldots, \text{head}_h)W^O
+$$
+
+Onde:
+$$\text{head}_i = \text{Attention}(X^QW^Q_i, X^KW^K_i, X^VW^V_i)$$
+
+Observe a concatenação dos diversos resultados de self-attention e a passagem desse vetor concatenado por uma matriz de pesos:
+
+$$
+\text{Concat}(\text{head}_1, \text{head}_2, \ldots, \text{head}_h)_{(n \times hd)}W^O_{(hd \times d)} = M_{(n \times d)}
+$$
+
+## Fator de escala de $QK^T$
 
 ## Adicionando Batches à jogada
 
 Quando falamos de deep learning, o método de otimização mais utilizado é Mini-Batch Gradient Descent. Então, como incorporar batches à esse processo de treinamento?
 
-## Reflexão sobre tamanho máximo de sequência
+A resposta para essa pergunta não é tão complicada. Na prática, basta incorporar mais uma dimensão à matriz de entrada $X$. Então, para cada elemento nessa dimensão (que é uma sequência distinta de input), efetuamos as operações comentadas até aqui.
+Então, a matriz de entrada é da forma:
+$$
+X_{(b \times n \times d)}
+$$
 
+## Reflexão sobre tamanho máximo de sequência
+#### Co-escrito por João Gabriel
+É interessante comentar sobre batches pois essa técnica, juntamente com Positional encoding (que será abordado mais adiante) implica em uma conhecida limitação da arquitetura Transformer. Perceba que, em um batch de 32 sequências, a matriz de entrada é tal que temos um valor constante (para cada sequência) de $n$ (tamanho da sequência) e de $d$ (tamanho do embedding dos tokens). 
+
+Para $d$ isso é simples. Cada token deve ter o mesmo comprimento, isto é, devem ser vetores com a mesma quantidade de elementos.
+
+Agora, para $n$, isso não é tão simples assim. Na prática, as sequências nesse batch não precisam ter o mesmo comprimento. O valor $n$  deve corrsponder ao tamanho da maior sequência no batch. Então, o restante das sequências são completadas com tokens especiais de padding, para chegar à esse tamanho.
+
+Desse modo, introduzimos à noção de um tamanho máximo de sequência na arquitetura Transformer, mas qual é o maior tamanho de sequência que essa arquitetura é capaz de lidar. 
+
+Se observarmos as matrizes de pesos treináveis $W^Q_{(d \times d)}, W^K_{(d \times d)}, W^V_{(d \times d)}$ é notável que elas não possuem influência de $n$. Então, no moecanismo de self-attention, não há uma limitação teórica para o tamanho da sequência. Obviamente teremos operações mais custosas ao computar
+
+$$
+\text{Attention}\left(Q, K , V\right) = \text{softmax}\left(QK^T\right)V
+$$
+
+Contudo, isso não é nenhum impeditivo. Porém, além desse custo elevado de processamento, um problema a se considerar ao lidar com sequências longas é o da memória. Perceba que no caso de uma sequência (de comprimento $n_0$) no batch ser consideravelmente mais longa que as demais, precisaremos ter uma matriz de entrada:
+
+$$
+X_{(b \times n_0 \times d)}
+$$
+
+Desse modo, temos complexidade $O(n_0)^2$ em memória sendo que como as demais sequências são bem menores, a maior parte dessa memória está sendo desperdiçada com tokens de padding.
+
+Além dessas questões, sequências muito longas podem fazer com que o Positional-Encoding empregado no modelo não funcione bem. Já que geralmente esse encoding é composto de uma combinação de ondas senoidais, é possível que para sequências muito longas, o período dessas ondas não seja longo o suficiente, o que pode fazer com que uma palavra no final da sequência seja interpretada como uma palavra no início da sequência.

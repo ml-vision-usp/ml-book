@@ -1,4 +1,4 @@
-# O que fazer com o embedding contextualizado?
+# Decoder da arquitetura Transformer
 
 Como vamos do embedding contextualizado entregue pelo encoder de Transformer para uma frase em outro idioma (no contexto de tradução).
 
