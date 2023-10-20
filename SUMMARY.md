@@ -61,8 +61,8 @@
 [comment]: <> * [Attention](deep-learning/redes-recorrentes/attention.md)
 * [Transformers](deep-learning/transformers/README.md)
   * [Self-Attention](deep-learning/transformers/self-attention.md)
-  * [Noção matricial de self-Attention](deep-learning/self-attention-matricial.md)
-  * [Transformer's Encoder](deep-learning/transformers/transformer's-encoder.md)
+  * [Noção matricial de self-Attention](deep-learning/transformers/self-attention-matricial.md)
   * [Positional Encoding](deep-learning/transformers/positional-encoding.md)
+  * [Transformer's Encoder](deep-learning/transformers/transformer's-encoder.md)
   * [Transformer's Decoder](deep-learning/transformers/transformer's-decoder.md)
 
