@@ -2,39 +2,40 @@
 
 * [Overview](README.md)
 
-## CONCEITOS INICIAIS
+[comment]: <> ## CONCEITOS INICIAIS
 
-* [Aprendizado a partir de dados](conceitos-iniciais/aprendizado-a-partir-de-dados/README.md)
-  * [Abstração do aprendizado](conceitos-iniciais/aprendizado-a-partir-de-dados/abstracao-do-aprendizado.md)
-* [Modelo linear](conceitos-iniciais/modelo-linear.md)
-* [Função de Perda](conceitos-iniciais/funcao-de-perda/README.md)
-  * [Otimização](conceitos-iniciais/funcao-de-perda/otimizacao.md)
-  * [Gradiente Descendente](conceitos-iniciais/funcao-de-perda/gradiente-descendente.md)
-  * [Máxima Variação](conceitos-iniciais/funcao-de-perda/maxima-variacao.md)
+[comment]: <> * [Aprendizado a partir de dados](conceitos-iniciais/aprendizado-a-partir-de-dados/README.md)
+[comment]: <> * [Abstração do aprendizado](conceitos-iniciais/aprendizado-a-partir-de-dados/abstracao-do-aprendizado.md)
+[comment]: <> * [Modelo linear](conceitos-iniciais/modelo-linear.md)
+[comment]: <> * [Função de Perda](conceitos-iniciais/funcao-de-perda/README.md)
+[comment]: <> * [Otimização](conceitos-iniciais/funcao-de-perda/otimizacao.md)
+[comment]: <> * [Gradiente Descendente](conceitos-iniciais/funcao-de-perda/gradiente-descendente.md)
+[comment]: <> * [Máxima Variação](conceitos-iniciais/funcao-de-perda/maxima-variacao.md)
 
-## Algoritmos básicos
+[comment]: <> ## Algoritmos básicos
 
-* [Regressão Linear](algoritmos-basicos/regressao-linear.md)
-* [Regressão Logística](algoritmos-basicos/regressao-logistica.md)
-* [Regressão Logística Multinomial](algoritmos-basicos/regressao-logistica-multinomial.md)
-* [Perceptron](algoritmos-basicos/perceptron.md)
+[comment]: <> * [Regressão Linear](algoritmos-basicos/regressao-linear.md)
+[comment]: <> * [Regressão Logística](algoritmos-basicos/regressao-logistica.md)
+[comment]: <> * [Regressão Logística Multinomial](algoritmos-basicos/regressao-logistica-multinomial.md)
+[comment]: <> * [Perceptron](algoritmos-basicos/perceptron.md)
 
 ## MAIS ALGORITMOS
 
-* [Support Vector Machines](mais-algoritmos/support-vector-machines.md)
+[comment]: <> * [Support Vector Machines](mais-algoritmos/support-vector-machines.md)
 * [Árvores de Decisão](mais-algoritmos/arvores-de-decisao.md)
-* [Floresta Aleatória](mais-algoritmos/floresta-aleatoria.md)
-* [K-nearest Neighbors](mais-algoritmos/k-nearest-neighbors.md)
+[comment]: <> * [Floresta Aleatória](mais-algoritmos/floresta-aleatoria.md)
+[comment]: <> * [K-nearest Neighbors](mais-algoritmos/k-nearest-neighbors.md)
 
-## Considerações sobre treinamento
+[comment]: <> ## Considerações sobre treinamento
 
-* [Overfitting](consideracoes-sobre-treinamento/overfitting.md)
-* [Grid Search](consideracoes-sobre-treinamento/grid-search.md)
-* [Método Holdout](consideracoes-sobre-treinamento/metodo-holdout.md)
-* [Cross Validation](consideracoes-sobre-treinamento/cross-validation.md)
-* [Métricas de Avaliação de Modelos](consideracoes-sobre-treinamento/metricas-de-avaliacao-de-modelos.md)
+[comment]: <> * [Overfitting](consideracoes-sobre-treinamento/overfitting.md)
+[comment]: <> * [Grid Search](consideracoes-sobre-treinamento/grid-search.md)
+[comment]: <> * [Método Holdout](consideracoes-sobre-treinamento/metodo-holdout.md)
+[comment]: <> * [Cross Validation](consideracoes-sobre-treinamento/cross-validation.md)
+[comment]: <> * [Métricas de Avaliação de Modelos](consideracoes-sobre-treinamento/metricas-de-avaliacao-de-modelos.md)
 
 [comment]: <> ## Redução de DImensionalidade
+
 [comment]: <> * [PCA](reducao-de-dimensionalidade/pca.md)
 [comment]: <> * [t-SNE](reducao-de-dimensionalidade/t-sne.md)
 
