@@ -34,35 +34,34 @@
 * [Cross Validation](consideracoes-sobre-treinamento/cross-validation.md)
 * [Métricas de Avaliação de Modelos](consideracoes-sobre-treinamento/metricas-de-avaliacao-de-modelos.md)
 
-## Redução de Dimensionalidade
+[comment]: <> ## Redução de DImensionalidade
+[comment]: <> * [PCA](reducao-de-dimensionalidade/pca.md)
+[comment]: <> * [t-SNE](reducao-de-dimensionalidade/t-sne.md)
 
-* [PCA](reducao-de-dimensionalidade/pca.md)
-* [t-SNE](reducao-de-dimensionalidade/t-sne.md)
+[comment]: <> ## TIPOS DE APRENDIZADO
 
-## TIPOS DE APRENDIZADO
+[comment]: <> * [Aprendizado supervisionado](tipos-de-aprendizado/aprendizado-supervisionado.md)
+[comment]: <> * [Aprendizado não-supervisionado](tipos-de-aprendizado/aprendizado-nao-supervisionado.md)
+[comment]: <> * [Aprendizado por reforço](tipos-de-aprendizado/aprendizado-por-reforco.md)
+[comment]: <> * [Aprendizado auto-supervisionado](tipos-de-aprendizado/aprendizado-auto-supervisionado.md)
 
-* [Aprendizado supervisionado](tipos-de-aprendizado/aprendizado-supervisionado.md)
-* [Aprendizado não-supervisionado](tipos-de-aprendizado/aprendizado-nao-supervisionado.md)
-* [Aprendizado por reforço](tipos-de-aprendizado/aprendizado-por-reforco.md)
-* [Aprendizado auto-supervisionado](tipos-de-aprendizado/aprendizado-auto-supervisionado.md)
+[comment]: <> ## REDES NEURAIS
 
-## REDES NEURAIS
-
-* [Multilayer Perceptron](redes-neurais/multilayer-perceptron.md)
-* [Forward propagation](redes-neurais/forward-propagation.md)
-* [Backpropagation](redes-neurais/backpropagation.md)
-* [Feedforward Neural Network](redes-neurais/feedforward-neural-network.md)
+[comment]: <> * [Multilayer Perceptron](redes-neurais/multilayer-perceptron.md)
+[comment]: <> * [Forward propagation](redes-neurais/forward-propagation.md)
+[comment]: <> * [Backpropagation](redes-neurais/backpropagation.md)
+[comment]: <> * [Feedforward Neural Network](redes-neurais/feedforward-neural-network.md)
 
 ## DEEP LEARNING
 
-* [Redes Convolucionais](deep-learning/redes-convolucionais/README.md)
-  * [Camada convolucional](deep-learning/redes-convolucionais/camada-convolucional.md)
-  * [Camada de pooling](deep-learning/redes-convolucionais/camada-de-pooling.md)
-* [Redes Recorrentes](deep-learning/redes-recorrentes/README.md)
-  * [Attention](deep-learning/redes-recorrentes/attention.md)
+[comment]: <> * [Camada convolucional](deep-learning/redes-convolucionais/camada-convolucional.md)
+[comment]: <> * [Camada de pooling](deep-learning/redes-convolucionais/camada-de-pooling.md)
+[comment]: <> * [Redes Recorrentes](deep-learning/redes-recorrentes/README.md)
+[comment]: <> * [Attention](deep-learning/redes-recorrentes/attention.md)
 * [Transformers](deep-learning/transformers/README.md)
   * [Self-Attention](deep-learning/transformers/self-attention.md)
-  * [Transformer's Encoder](deep-learning/transformers/transformers-encoder.md)
+  * [Noção matricial de self-Attention](deep-learning/self-attention-matricial.md)
+  * [Transformer's Encoder](deep-learning/transformers/transformer's-encoder.md)
   * [Positional Encoding](deep-learning/transformers/positional-encoding.md)
-  * [Transformer's Decoder](deep-learning/transformers/transformers-decoder.md)
-  * [Embbeding Contextualizado](deep-learning/transformers/embbeding-contextualizado.md)
+  * [Transformer's Decoder](deep-learning/transformers/transformer's-decoder.md)
+
