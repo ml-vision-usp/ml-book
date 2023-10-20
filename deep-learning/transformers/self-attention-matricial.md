@@ -61,7 +61,7 @@ Onde o $C[i,:] = {\bf y}_i$
 Portanto, temos que:
 
 $$
-\text{Attention}\left(Q, K , V\right) = \text{softmax}\left(QK^T\right)V
+\text{Attention}\left(Q, K , V\right) = \text{softmax}\left(QK^T\right)V = C_{(n \times d)}
 $$
 
 ## Multihead Attention

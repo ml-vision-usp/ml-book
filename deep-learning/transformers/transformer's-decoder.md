@@ -92,7 +92,7 @@ Desse modo, perceba que, apesar da frase inteira estar disponível, a matriz de 
 
 Ou seja, $$t_1$$ só pode ter relação contextual analisada com $$t_1$$. → Somente $$t_1t_1$$.
 
-$$t_2$$ pode ter relação com $$t_1$$ e $$t_2$$. ⇒ $$t_2t_1;t_2t_2$$.
+$t_2$ pode ter relação com $$t_1$$ e $$t_2$$. ⇒ $$t_2t_1;t_2t_2$$.
 
 E assim por diante. Perceba que dessa maneira podemos dar a frase inteira como input simulando uma geração sequencial das palavras.
 
