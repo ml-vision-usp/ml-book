@@ -35,7 +35,6 @@
 * [Métricas de Avaliação de Modelos](consideracoes-sobre-treinamento/metricas-de-avaliacao-de-modelos.md)
 
 [comment]: <> ## Redução de DImensionalidade
-
 [comment]: <> * [PCA](reducao-de-dimensionalidade/pca.md)
 [comment]: <> * [t-SNE](reducao-de-dimensionalidade/t-sne.md)
 
