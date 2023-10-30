@@ -17,10 +17,10 @@ Para entender melhor essa operação, usaremos a notação de colunas e linhas d
 
 Então, voltando à matriz $\text{Scores}$, a matriz $Q$ é usada no sentido de ser as palavras sobre as quais queremos computar self-attention (Query) e a matriz $K$ é usada no sentido de possuir as palavras com as quais, para cada palavra em $Q$, iremos computar a relação por meio do dot product. 
 
-Então, se $Q[i, :]_{(1 \times d)}$ é uma palavra (vetor), $\text{Scores}[i, :]_{(1 \times n)}$ é importância contextual dessa palavra pa para todas as palavras da sequência.
+Então, se $Q[i, :]_{(1 \times d)}$ é uma palavra (vetor), $\text{Scores}[i, :]_{(1 \times n)}$ é importância contextual dessa palavra para todas as palavras da sequência.
 
 Desse modo, perceba que $$\text{Scores}[i, :] = \begin{Bmatrix}
-A[i, :] \cdot K^T[:, 1] & A[i, :] \cdot K^T[:, 2] & \cdots & A[i, :] \cdot K^T[:, n]  \\
+Q[i, :] \cdot K^T[:, 1] & Q[i, :] \cdot K^T[:, 2] & \cdots & Q[i, :] \cdot K^T[:, n]  \\
 \end{Bmatrix}$$
 
 Onde 
@@ -81,6 +81,78 @@ $$
 $$
 
 ## Fator de escala de $QK^T$
+
+No artigo Attention is All you Need, o mecanismo de Attention é definido como se segue:
+$$
+\text{Attention}\left(Q, K , V\right) = \text{softmax}\left(\dfrac{QK^T}{\sqrt{d_k}}\right)V
+$$
+
+O fator de escala 
+$$
+\dfrac{1}{\sqrt{d_k}}
+$$
+
+Onde $$d_k$$ é $$d$$, a dimensão do embedding dos tokens. 
+
+A justificativa para a presença desse fator de escala na operação é para lidar com o problema de desaparecimento de gradiente relacionado ao dot product utilizado para computar attention. Perceba que essa escala é uma operação element wise na matriz $$\text{Scores}$$. Então, para ilustrar como os valores oriundos do dot product podem ficar grandes, o exemplo utilizado é o seguinte:
+
+Sabendo que $$\text{Scores} = QK^T$$ é dado por:
+
+$$\text{Scores}[i, :] = \begin{Bmatrix}
+Q[i, :] \cdot K^T[:, 1] & Q[i, :] \cdot K^T[:, 2] & \cdots & Q[i, :] \cdot K^T[:, n]  \\
+\end{Bmatrix}$$
+
+Onde 
+
+$$
+Q[i, :] \cdot K^T[:, j] = q^{(i)} \cdot k^{(j)}
+$$
+
+Em que $$q^{(i)}$$ e $$k^{(j)}$$ são tokens cujo input tem dimensão $$d$$, esse dot product é dado por:
+
+$$
+q^{(i)} \cdot k^{(j)} = \sum_{p=1}^{d_k} q^{(i)}_p k^{(j)}_p
+$$
+
+Então, assumindo que os componentes de $$q^{(i)}$$ e $$k^{(j)}$$ sejam independentes entre si, tenham média 0 e variância 1, temos:
+
+$$
+\text{E} \left(q^{(i)} \cdot k^{(j)}\right) = \text{E} \left( \sum_{p=1}^{d_k} q^{(i)}_p k^{(j)}_p \right) = \sum_{p=1}^{d_k} \text{E} \left( q^{(i)}_p k^{(j)}_p \right) = \sum_{p=1}^{d_k} \text{E} \left( q^{(i)}_p \right) \text{E} \left( k^{(j)}_p \right) = 0                                                   
+$$
+e
+
+$$
+\text{Var} \left(q^{(i)} \cdot k^{(j)}\right) = \text{E} \left(\left(q^{(i)} \cdot k^{(j)} \right)^2\right) - \left(\text{E} \left(q^{(i)} \cdot k^{(j)}\right)\right)^2 = \text{E} \left(\left(q^{(i)} \cdot k^{(j)} \right)^2\right) 
+$$
+
+Disso,
+
+$$
+\text{E} \left(\left(q^{(i)} \cdot k^{(j)} \right)^2\right) = \text{E} \left( \sum_{p=1}^{d_k} q^{(i)}_p k^{(j)}_p  \sum_{r=1}^{d_k} q^{(i)}_r k^{(j)}_r \right) = \text{E} \left( \sum_{\substack{p=1 \\ r=1}}^{d_k} q^{(i)}_p k^{(j)}_p q^{(i)}_r k^{(j)}_r \right) =  \sum_{\substack{p=1 \\ r=1}}^{d_k} \text{E} \left( q^{(i)}_p k^{(j)}_p q^{(i)}_r k^{(j)}_r \right)
+$$
+
+Quando $$p \neq r$$:
+
+$$
+\text{E} \left( q^{(i)}_p k^{(j)}_p q^{(i)}_r k^{(j)}_r \right) = 0
+$$
+Pois os elementos de $$q$$ e $$k$$ têm média 0.
+Agora, quando $$p = r$$:
+$$
+\text{E} \left( q^{(i)^2}_p k^{(j)^2}_p\right) = \text{E} \left( q^{(i)^2}_p \right) \text{E} \left(k^{(j)^2}_p\right) = \left( 0 - \text{E} \left( q^{(i)^2}_p \right) \right) \left(0 - \text{E} \left(k^{(j)^2}_p\right) \right)
+$$
+
+Então:
+$$
+\text{E} \left( q^{(i)^2}_p k^{(j)^2}_p\right) = \left( \text{E} \left( q^{(i)}_p \right) - \text{E} \left( q^{(i)^2}_p \right) \right) \left( \text{E} \left(k^{(j)}_p\right) - \text{E} \left(k^{(j)^2}_p\right) \right) = \text{Var} \left( q^{(i)}_p \right) \text{Var} \left( k^{(j)}_p \right) = 1 \cdot 1 = 1
+$$
+
+Assim, 
+$$
+\text{Var} \left(q^{(i)} \cdot k^{(j)}\right) = \sum_{\substack{p=1 \\ r=1}}^{d_k} \text{E} \left( q^{(i)}_p k^{(j)}_p q^{(i)}_r k^{(j)}_r \right) = \sum_{p=1}^{d_k} \text{E} \left( q^{(i)^2}_p k^{(j)^2}_p \right) = \sum_{p=1}^{d_k} 1 = d_k
+$$
+
+Com esse valor tão alto de variância a função Softmax pode nos devolver valores baixos demais, o que causa desaparecimento de gradiente. Ao usarmos o fator de escala, recuperamos uma variância de 1, o que melhora essa questão do desaparecimento do gradiente.
 
 ## Adicionando Batches à jogada
 
