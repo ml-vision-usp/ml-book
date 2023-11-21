@@ -28,7 +28,7 @@ $$
 Interpretando as palavras $$v_i$$ e $$v_j$$ como vetores no espaço n-dimensional, perceba que o valor do cosseno será maior para $$\theta$$ pequeno. Então, esse produto escalar nos dará valores altos para palavras cujos embeddings (pontos) estão próximos no espaço n-dimensional.
 
 <div align="center">
-<img src="images/fig1.png" alt="Alt text for the image" width="300"/>
+<img src="images/fig1.png" alt="Obtendo scores via dot product" width="300"/>
 </div>
 
 
@@ -47,7 +47,7 @@ $$
 Aqui, cada vetor de score $$(s_{i1}, \ldots, s_{in})$$ estará normalizado tal que seus correspondetes $$(w_{i1}, \ldots, w_{in})$$ são tais que:$$\sum^n_{j=1}w_{ij} = 1$$.
 
 <div align="center">
-<img src="images/fig2.png" alt="Alt text for the image" width="300"/>
+<img src="images/fig2.png" alt="Normalizando os scores" width="300"/>
 </div>
 
 Agora, nós vamos utilizar esses vetores de pesos $$(w_{ij})$$ como segue:
@@ -92,7 +92,7 @@ Note que, como essas matrizes serão obtidas treinando o modelo focando na captu
 {% endhint %}
 
 <div align="center">
-<img src="images/fig3.png" alt="Alt text for the image" width="300"/>
+<img src="images/fig3.png" alt="Interação entre $$\text{Q, K, V}$$" width="300"/>
 </div>
 
 
@@ -106,7 +106,7 @@ Nesse ponto, podemos introduzir a noção matricial que multiheaded self attenti
 
 
 {% hint style="warning" %}
-Como funciona o treinamento para ajuste de pesos Q, K, V e W?
+Como funciona o treinamento para ajuste de pesos $$\text{Q, K, V}$$ e $$W$$?
 
 Acho que precisamos chegar ao final do decoder para começar a visualizar isso
 {% endhint %}

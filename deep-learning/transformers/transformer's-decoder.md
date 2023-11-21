@@ -5,13 +5,13 @@ Agora que já sabemos como o decoder de um modelo transformer funciona, precisam
 Nesse sentido, a partir de uma perspectiva de muito alto nível, o encoder e o decoder interagem da seguinte maneira:
 
 <div align="center">
-<img src="images/fig4.png" alt="Alt text for the image" width="300"/>
+<img src="images/fig4.png" alt="Interação entre Encoder e Decoder" width="300"/>
 </div>
 
-Quando estamos falando de Transformers Decoder, temos a seguinte figura esquemática:
+Quando estamos falando de Transformers Decoder, podemos começar a entendê-lo a partir da seguinte figura esquemática:
 
 <div align="center">
-<img src="images/fig5.png" alt="Alt text for the image" width="300"/>
+<img src="images/fig5.png" alt="Parte inicial do Decoder" width="300"/>
 </div>
 
 É importante que façamos uma distinção entre o funcionamento do decoder em estágio de treinamento e inferência. Uma sacada muito interessante implementada na arquitetura transformer é modelar uma tarefa inerentemente sequencial (prever a próxima palavra, dado as palavras anteriores em um texto) de modo que, no momento de treinar a rede neural para efetuar essa tarefa, esse treinamento possa ser feito de maneira paralela. 
@@ -39,7 +39,7 @@ Para entender como Masked Self-Attention funciona, podemos pensar na matriz de S
 Dado as palavras: $$t_1, t_2  \text{ e } t_3$$ ($$t$$ de "traduzido"), temos a seguinte matriz:
 
 <div align="center">
-<img src="images/masked0.png" alt="Alt text for the image" width="300"/>
+<img src="images/masked0.png" alt="Matriz de Self-Attention" width="300"/>
 </div>
 
 Onde o elemento $$ij$$ denota a intensidade da relação contextual entre as palavras $$t_i$$ e $$t_j$$.
@@ -49,7 +49,7 @@ Agora, perceba que, em momento de treinamento, como já possuímos a frase tradu
 Nesse ponto, entra o conceito de Masked Self-Attention A ideia aqui é transformar a matriz de Sel-Attention (ilustrada anteriormente) em algo do tipo:
 
 <div align="center">
-<img src="images/masked1.png" alt="Alt text for the image" width="300"/>
+<img src="images/masked1.png" alt="Matriz de Masked Self-Attention" width="300"/>
 </div>
 
 {% hint style="info" %}
@@ -73,7 +73,7 @@ Agora, depois de passarmos por Masked-Self Attention, com o que estamos lidando?
 Primeiro obtemos a matriz de self-attention e a utilizamos para obter o embedding contextualizado de uma palava traduzida em relação à própria frase traduzida. Assim, no momento de treinamento, cada palavra da frase traduzida origina um vetor $$y$$ (que é o embedding contextualizado):
 
 <div align="center">
-<img src="images/fig6.png" alt="Alt text for the image" width="300"/>
+<img src="images/fig6.png" alt="Aplicando Masked Self-Attention" width="300"/>
 </div>
 
 
@@ -85,7 +85,7 @@ Esse conceito de Attention é muito semelhante ao proposto por Attention[^2], no
 Perceba que, se formos utilizar a analogia de $$\text{Q, K, V}$$ nesse caso de Encoder-Decoder Attention, poderemos pensar em um esquema como o seguinte:
 
 <div align="center">
-<img src="images/fig7.png" alt="Alt text for the image" width="300"/>
+<img src="images/fig7.png" alt="Decoder simplificado" width="300"/>
 </div>
 
 Cada vetor contextualizado resultado do Encoder é relacionado com cada vetor contextualizado da palavra sendo predita. Esse relacionamento é treinável (devido a matriz de pesos $$\text{K}_{\text{encdec}}$$). Obtemos scores dessa relação. A palavra mais relacionada terá maior score e, então, influenciará mais o output.
