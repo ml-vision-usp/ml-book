@@ -92,7 +92,7 @@ Note que, como essas matrizes serão obtidas treinando o modelo focando na captu
 {% endhint %}
 
 <div align="center">
-<img src="images/fig3.png" alt="Interação entre $$\text{Q, K, V}$$" width="300"/>
+<img src="images/fig3.png" alt="Interação entre Q, K, V" width="300"/>
 </div>
 
 
@@ -112,4 +112,3 @@ Acho que precisamos chegar ao final do decoder para começar a visualizar isso
 {% endhint %}
 
 
-[^1]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., and Polosukhin, I. (2017). Attention is all you need.

@@ -80,7 +80,7 @@ Primeiro obtemos a matriz de self-attention e a utilizamos para obter o embeddin
 
 Depois disso, chegamos à etapa de Attention entre Encoder e Decoder. Nessa etapa usaremos o segundo tipo de dado que o decoder recebe como entrada (embeddings contextualizados da frase no idioma original).
 
-Esse conceito de Attention é muito semelhante ao proposto por Attention[^2], no qual, quantificamos a relação contextual da próxima palavra predita com todas as palavras da frase no idioma original.
+Esse conceito de Attention é muito semelhante ao proposto por Attention[[Bahdanau2014](Bibliografia.md#bibliografia)], no qual, quantificamos a relação contextual da próxima palavra predita com todas as palavras da frase no idioma original.
 
 Perceba que, se formos utilizar a analogia de $$\text{Q, K, V}$$ nesse caso de Encoder-Decoder Attention, poderemos pensar em um esquema como o seguinte:
 
@@ -116,7 +116,4 @@ Isso faz com que o processo de treinamento de uma rede Transformer seja totalmen
 
 Agora, quanto ao decoder em fase de inferência, acontece um processo muito semelhante ao descrito. A única diferença é que o processo não é paralelizável e, por isso, acontece até de maneira mais intuitiva. Uma palavra é predita de cada vez, levando em consideração as palavras preditas anteriormente e o contexto da frase no idioma original. Perceba que, para isso acontecer, não precisamos mudar nada na arquitetura do modelo, até mesmo a camada de Masked Self-Attention, se mantém a mesma.
 
-
-[^1]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., and Polosukhin, I. (2017). Attention is all you need.
-[^2]: Bahdanau, D., Cho, K., and Bengio, Y. (2014). Neural machine translation by jointly learning to align and translate.
 
