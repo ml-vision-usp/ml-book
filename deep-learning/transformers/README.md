@@ -6,7 +6,7 @@ O contexto dessa invenção é o de "Neural Machine Translation" (NMT), isto é,
 A arquitetura Transformer foi originalmente apresentada como formada por união de um encoder e de um decoder, como mostra a figura a baixo:
 
 <div align="center">
-<img src="images/arq.png" alt="Ilustração da arquitetura Transformer[[Vaswani2017](Bibliografia.md#bibliografia)] " width="300"/>
+<img src="images/arq.png" alt="Ilustração da arquitetura Transformer[Vaswani2017]" width="300"/>
 </div>
 
 Dessa forma, apresentaremos os conceitos envolvidos nessa arquitetura de modo a possbilitar um entendimento completo dessa ilustração que demonstra bem o funcionamento do modelo.

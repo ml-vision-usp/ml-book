@@ -65,4 +65,5 @@
   * [Positional Encoding](deep-learning/transformers/positional-encoding.md)
   * [Transformer's Encoder](deep-learning/transformers/transformer's-encoder.md)
   * [Transformer's Decoder](deep-learning/transformers/transformer's-decoder.md)
+  * [Bibliografia utilizada](deep-learning/transformers/Bibliografia.md)
 
