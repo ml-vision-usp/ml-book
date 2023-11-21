@@ -7,7 +7,7 @@ Assim, vamos abordar o encoder.
 Considerando a imagem do encoder presente no paper Attention is All you Need, temos:
 
 <div align="center">
-<img src="images/encoder1.png" alt="Alt text for the image" width="300"/>
+<img src="images/encoder1.png" alt="Encoder Transformer" width="300"/>
 </div>
 
 Primeiramente injetamos informação posicional nos inputs. Isso é representado pelo bloco de Positional Encoding.
