@@ -41,14 +41,14 @@ $$
 \text{FFN}(x) = \text{ReLU}(xW_1 + b_1)W_2 + b_2
 $$
 
-Onde $x = C[i, :]$, isto é, um vetor originado por uma palavra.
+Onde $$x = C[i, :]$$, isto é, um vetor originado por uma palavra.
 
-A partir disso, é possível observar que essas FFN é uma rede com duas camadas. A primeira ($W_1$) é tal que:
-$W_{1(d \times d_{ff})}$. Isso quer dizer que mapeamos o vetor de um token (que possui $d$ posições) para um vetor de dimensão $d_{ff}$. Depois disso, precisamos fazer com que esse vetor volte a possuir dimensão $d$. Então, a segunda camada dessa rede ($W_2$) é tal que: $W_{2(d_{ff} \times d)}$
+A partir disso, é possível observar que essas FFN é uma rede com duas camadas. A primeira ($$W_1$$) é tal que:
+$$W_{1(d \times d_{ff})}$$. Isso quer dizer que mapeamos o vetor de um token (que possui $$d$$ posições) para um vetor de dimensão $$d_{ff}$$. Depois disso, precisamos fazer com que esse vetor volte a possuir dimensão $$d$$. Então, a segunda camada dessa rede ($$W_2$$) é tal que: $$W_{2(d_{ff} \times d)}$$
 
 Uma maneira de entender a função desse processo na arquitetura Transformer é que as FFN's possuem pesos treináveis para adaptar os tokens de saída de uma camada de Attention, otimizando-os para se tornarem a entrada da próxima camada de Attention.
 
 
-Assim, o funcionamento do encoder do Transformer é dado por uma repetição de $\text{N}$ vezes desse processo. Ao final disso, cada token de input se tornou uma versão altamente contextualizada de si mesmo, que é mais próxima (no espaço n-dimensional) das palavras na frase que possuem maior semelhança contextual. Então, essa matriz final (cujas linhas são as representações contextualizadas dos tokens) é um dos dados de entrada do decoder dos Transformers. 
+Assim, o funcionamento do encoder do Transformer é dado por uma repetição de $$\text{N}$$ vezes desse processo. Ao final disso, cada token de input se tornou uma versão altamente contextualizada de si mesmo, que é mais próxima (no espaço n-dimensional) das palavras na frase que possuem maior semelhança contextual. Então, essa matriz final (cujas linhas são as representações contextualizadas dos tokens) é um dos dados de entrada do decoder dos Transformers. 
 
 [^1]: [CodeEmporium]. (20/02/2023). *Layer Normalization - EXPLAINED (in Transformer Neural Networks)*. YouTube. Available at: https://www.youtube.com/watch?v=G45TuC6zRf4

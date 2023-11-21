@@ -6,7 +6,7 @@ Para entender esse conceito, é importante saber o significado de "Embbeding". Q
 
 Nesse sentido, para que possamos trabalhar com palavras de um modo que seja adequado para modelos de Machine Learning, precisamos representá-las de outra maneira. Assim, transformamos cada palavra em um vetores em um espaço n-dimensional. Isso é feito pelo processo de embbeding. A forma mais imediata de se fazer essa vetorização de palavras é por meio do, já conhecido, "One-Hot Encoding".
 
-Nesse método, o alfabeto (todas as palavras contempladas pelo modelo) de tamanho $n$ é a base canônica do espaço n-dimensional, em que cada palavra é um vetor da base canônica.
+Nesse método, o alfabeto (todas as palavras contempladas pelo modelo) de tamanho $$n$$ é a base canônica do espaço n-dimensional, em que cada palavra é um vetor da base canônica.
 
 Note que esse método não é tão representativo do sigificado semântico das palavras. Por exemplo, se considerarmos as palavras "visão", "olho" e "diamante" é evidente que as palavras "visão" e "olho" tem significado mais próximo que "diamante". Contudo, para o computador, após realizar "One-Hot Enconding" essas palavras estarão igualmente distantes. Então, fica claro que essa maneira de representação de palavras não é tão boa.
 
@@ -85,7 +85,7 @@ $$
 Assim, se computássemos $$y_1$$ daquela maneira ingênua, $$y_1$$ poderia acabar sofrendo uma influência indevida de $$v_2$$ somente por sua norma ocasionada pelo embedding ser muito grande.
 {% endhint %}
 
-Para abordar essa questão, inserimos matrizes de pesos treináveis ($\text{Q, K, V}$) para reger a influência dos vetores de palavras $$v_i$$ no 1º, 2º e 3º estágio de obtenção dos vetores contextualizados $$y$$.
+Para abordar essa questão, inserimos matrizes de pesos treináveis ($$\text{Q, K, V}$$) para reger a influência dos vetores de palavras $$v_i$$ no 1º, 2º e 3º estágio de obtenção dos vetores contextualizados $$y$$.
 
 {% hint style="warning" %}
 Note que, como essas matrizes serão obtidas treinando o modelo focando na captura de informação sobre contexto, elas serão capazes de explorar as características de contexto melhor que o embedding cru. Isso faz sentido?}
@@ -96,9 +96,9 @@ Note que, como essas matrizes serão obtidas treinando o modelo focando na captu
 </div>
 
 
-Perceba que a intuição de que as matrizes $\text{Q, K, V}$ serão capazes de capturar inteiramente as características de contexto pode parecer frágil. Ainda pensando que existem diversos contextos diferentes (semânticos) em uma mesma frase. Essas matrizes poderiam se especializar em representar o contexto de forma análoga ao embedding... (Afinal, de certa forma embedding também considera contexto).
+Perceba que a intuição de que as matrizes $$\text{Q, K, V}$$ serão capazes de capturar inteiramente as características de contexto pode parecer frágil. Ainda pensando que existem diversos contextos diferentes (semânticos) em uma mesma frase. Essas matrizes poderiam se especializar em representar o contexto de forma análoga ao embedding... (Afinal, de certa forma embedding também considera contexto).
 
-Daí surge o conceito de multi-headed Attention. Introduzimos diversas matrizes $\text{Q, K, V}$. Isto é, várias camadas da figura 1. Desse modo, teremos, ao final do processo, um embedding contextualizado para cada camada. A ideia é que cada um desses vetores $$y$$ seja uma representação contextual diferente da palavra em relação à frase.
+Daí surge o conceito de multi-headed Attention. Introduzimos diversas matrizes $$\text{Q, K, V}$$. Isto é, várias camadas da figura 1. Desse modo, teremos, ao final do processo, um embedding contextualizado para cada camada. A ideia é que cada um desses vetores $$y$$ seja uma representação contextual diferente da palavra em relação à frase.
 
 Então, como queremos somente um vetor que contenha toda essa informação, concatenaremos esses vetores $$y$$ e depois o fazemos passar por uma matriz de pesos W que fará esse vetor concatenado ter a dimensão (tamanho) desejado para y.
 

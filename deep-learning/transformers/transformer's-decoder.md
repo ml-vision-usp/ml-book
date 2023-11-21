@@ -61,7 +61,7 @@ Desse modo, perceba que, apesar da frase inteira estar disponível, a matriz de 
 
 Ou seja, $$t_1$$ só pode ter relação contextual analisada com $$t_1$$. → Somente $$t_1t_1$$.
 
-$t_2$ pode ter relação com $$t_1$$ e $$t_2$$. ⇒ $$t_2t_1;t_2t_2$$.
+$$t_2$$ pode ter relação com $$t_1$$ e $$t_2$$. ⇒ $$t_2t_1;t_2t_2$$.
 
 E assim por diante. Perceba que dessa maneira podemos dar a frase inteira como input simulando uma geração sequencial das palavras.
 
@@ -82,21 +82,21 @@ Depois disso, chegamos à etapa de Attention entre Encoder e Decoder. Nessa etap
 
 Esse conceito de Attention é muito semelhante ao proposto por Attention[^2], no qual, quantificamos a relação contextual da próxima palavra predita com todas as palavras da frase no idioma original.
 
-Perceba que, se formos utilizar a analogia de $Q$, $K$, $V$ nesse caso de Encoder-Decoder Attention, poderemos pensar em um esquema como o seguinte:
+Perceba que, se formos utilizar a analogia de $$\text{Q, K, V}$$ nesse caso de Encoder-Decoder Attention, poderemos pensar em um esquema como o seguinte:
 
 <div align="center">
 <img src="images/fig7.png" alt="Alt text for the image" width="300"/>
 </div>
 
-Cada vetor contextualizado resultado do Encoder é relacionado com cada vetor contextualizado da palavra sendo predita. Esse relacionamento é treinável (devido a matriz de pesos $K_{\text{encdec}}$). Obtemos scores dessa relação. A palavra mais relacionada terá maior score e, então, influenciará mais o output.
+Cada vetor contextualizado resultado do Encoder é relacionado com cada vetor contextualizado da palavra sendo predita. Esse relacionamento é treinável (devido a matriz de pesos $$\text{K}_{\text{encdec}}$$). Obtemos scores dessa relação. A palavra mais relacionada terá maior score e, então, influenciará mais o output.
 
-Então, normalizamos os scores e os utilizamos para ponderar uma nova representação das palavras do idioma original. Essa nova representação é originada pela matriz de pesos treináveis ($V_{\text{encdec}}$).
+Então, normalizamos os scores e os utilizamos para ponderar uma nova representação das palavras do idioma original. Essa nova representação é originada pela matriz de pesos treináveis ($$\text{V}_{\text{encdec}}$$).
 
-Agora, cada palavra é um vetor de tamanho $d$ (lembrando que $d$ é o tamanho do embedding) e precisamos ir transformar esse vetor em um vetor de tamanho $N$, onde $N$ é o tamanho do vocabulário e o valor do elemento $i$ é um score que está relacionado à quão provavel é que a próxima palavra predita seja a palavra $i$ do vocabulário. Note que, caso o embedding das palavras de entrada forem One-Hot encoding, temos que $d = N$. De qualquer forma, para obter esse vetor, basta uma camada linear -- que é mostrada na figura.
+Agora, cada palavra é um vetor de tamanho $$d$$ (lembrando que $$d$$ é o tamanho do embedding) e precisamos ir transformar esse vetor em um vetor de tamanho $$N$$, onde $$N$$ é o tamanho do vocabulário e o valor do elemento $$i$$ é um score que está relacionado à quão provavel é que a próxima palavra predita seja a palavra $$i$$ do vocabulário. Note que, caso o embedding das palavras de entrada forem One-Hot encoding, temos que $$d = N$$. De qualquer forma, para obter esse vetor, basta uma camada linear -- que é mostrada na figura.
 
-Então, para quue esses valores de quão provável a palavra $i$ do vocabulário seja a próxima palavra predita se tornem, de fato, probabilidades, utilizamos a função softmax.
+Então, para quue esses valores de quão provável a palavra $$i$$ do vocabulário seja a próxima palavra predita se tornem, de fato, probabilidades, utilizamos a função softmax.
 
-Agora, temos um vetor do tamanho do vocabulário em que cada elemento $i$ corresponde à probabilidade de escolher a palavra $i$ como a próxima palavra da frase traduzida. Assim, para que haja variabilidade nas traduções, é possível que, no lugar de somente tomar $\text{argmax}$ desse vetor, amostremos $i$ de acordo com as probabilidades do vetor. 
+Agora, temos um vetor do tamanho do vocabulário em que cada elemento $$i$$ corresponde à probabilidade de escolher a palavra $$i$$ como a próxima palavra da frase traduzida. Assim, para que haja variabilidade nas traduções, é possível que, no lugar de somente tomar $$\text{argmax}$$ desse vetor, amostremos $$i$$ de acordo com as probabilidades do vetor. 
 
 ### Considerações Sobre Treinamento
 É razoável pensar tradução como um problema de classificação. Portanto, podemos usar Cross-Entropy como função de perda.
@@ -112,9 +112,9 @@ Isso faz com que o processo de treinamento de uma rede Transformer seja totalmen
 {% endhint %}
 
 
-## Decoder em Estágio de Treinamento
+## Decoder em Estágio de Inferência
 
-Agora, quanto ao decoder em fase de inferencia, acontece um processo muito semelhante ao descrito. A única diferença é que o processo não é paralelizável e, por isso, acontece até de maneira mais intuitiva. Uma palavra é predita de cada vez, levando em consideração as palavras preditas anteriormente e o contexto da frase no idioma original. Perceba que, para isso acontecer, não precisamos mudar nada na arquitetura do modelo, até mesmo a camada de Masked Self-Attention, se mantém a mesma.
+Agora, quanto ao decoder em fase de inferência, acontece um processo muito semelhante ao descrito. A única diferença é que o processo não é paralelizável e, por isso, acontece até de maneira mais intuitiva. Uma palavra é predita de cada vez, levando em consideração as palavras preditas anteriormente e o contexto da frase no idioma original. Perceba que, para isso acontecer, não precisamos mudar nada na arquitetura do modelo, até mesmo a camada de Masked Self-Attention, se mantém a mesma.
 
 
 [^1]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., and Polosukhin, I. (2017). Attention is all you need.
