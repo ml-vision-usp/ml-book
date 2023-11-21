@@ -32,7 +32,7 @@ $$
 
 Na prática isso mostra uma conexão residual entre o resultado de uma camada do modelo e o input dessa camada. A explicação mais intuitiva e usual para essa prática é que essas conexões residuais auxiliam no problema de _vanishing gradients_.
 
-Além disso, como o próprio nome diz, o processo de normalização faz com que tenhamos (após cada camada da rede neural) valores com média 0 e desvio padrão 1. Como teremos valores sem grande variância e centrados em 0, isso faz com que os passos de gradiente tenham valores absolutos consistentes e dentro de um intervalo definido. Desse modo, teremos _learning steps_ de tamanhos semelhantes e o processo de aprendizado se torna mais estável. [[CodeEmporium-LayerNorm](Bibliografia.md#bibliografia)]
+Além disso, como o próprio nome diz, o processo de normalização faz com que tenhamos (após cada camada da rede neural) valores com média 0 e desvio padrão 1. Como teremos valores sem grande variância e centrados em 0, isso faz com que os passos de gradiente tenham valores absolutos consistentes e dentro de um intervalo definido. Desse modo, teremos _learning steps_ de tamanhos semelhantes e o processo de aprendizado se torna mais estável. \[[CodeEmporium-LayerNorm](Bibliografia.md)]
 
 ## Feed Forward
 Nesse ponto, os vetores originados pelos inputs passam por uma rede fully connected (FFN). Algo importante de se notar é que essa FFN é "position wise". Isso quer dizer que os tokens de cada posição da frase não se comunicarão entre si. Isto é, a FFN têm um escopo de atuação restrito à cada token. Observe:

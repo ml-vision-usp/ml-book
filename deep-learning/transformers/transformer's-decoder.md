@@ -80,7 +80,7 @@ Primeiro obtemos a matriz de self-attention e a utilizamos para obter o embeddin
 
 Depois disso, chegamos à etapa de Attention entre Encoder e Decoder. Nessa etapa usaremos o segundo tipo de dado que o decoder recebe como entrada (embeddings contextualizados da frase no idioma original).
 
-Esse conceito de Attention é muito semelhante ao proposto por Attention[[Bahdanau2014](Bibliografia.md#bibliografia)], no qual, quantificamos a relação contextual da próxima palavra predita com todas as palavras da frase no idioma original.
+Esse conceito de Attention é muito semelhante ao proposto por Attention\[[Bahdanau2014](Bibliografia.md)], no qual, quantificamos a relação contextual da próxima palavra predita com todas as palavras da frase no idioma original.
 
 Perceba que, se formos utilizar a analogia de $$\text{Q, K, V}$$ nesse caso de Encoder-Decoder Attention, poderemos pensar em um esquema como o seguinte:
 
