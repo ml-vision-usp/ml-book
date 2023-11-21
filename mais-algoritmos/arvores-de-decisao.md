@@ -28,7 +28,7 @@ Portanto, cada folha representa uma região diferente do espaço de entrada. Res
 
 Infelizmente, encontrar a árvore de decisão ótima é um problema NP-Completo (inviável computacionalmente, portanto, para grandes conjuntos de dados). Com isso, precisamos utilizar um algoritmo guloso para aproximar a solução. Portanto, iremos crescer a árvore um nó por vez.
 
-Considere que estamos em um nó $i$. Queremos encontrar um limiar e um atributo para fazer a divisão de forma ótima. Mas o que é uma "forma ótima"?
+Considere que estamos em um nó $$i$$. Queremos encontrar um limiar e um atributo para fazer a divisão de forma ótima. Mas o que é uma "forma ótima"?
 
 Podemos usar diversas métricas para isso. Para regressão, comumente é utilizado o erro quadrático. Para classificação, métricas comuns são ganho de informação e impureza de Gini. 
 
@@ -43,14 +43,14 @@ Se K é conjunto de classes, então temos que a fórmula para calculá-la é:
 
 $$ E = -\sum_{k \in K} P(y=k)log(P(y=k))$$
 
-Agora, seja $E_T$ a entropia do conjunto completo, e $$E_E$$ e $$E_D$$ a entropia dos subconjuntos. Além disso, sejam $P_E$ e $$P_D$$ a proporção dos dados que foram para cada subconjunto. Então, o ganho de informação é a diferença entre a entropia total e a entropia média dos conjuntos separados. Podemos calculá-la da seguinte forma:
+Agora, seja $E_T$ a entropia do conjunto completo, e $$E_E$$ e $$E_D$$ a entropia dos subconjuntos. Além disso, sejam $$P_E$$ e $$P_D$$ a proporção dos dados que foram para cada subconjunto. Então, o ganho de informação é a diferença entre a entropia total e a entropia média dos conjuntos separados. Podemos calculá-la da seguinte forma:
 
 $$ GI = E_T - P_L E_L - P_R E_R $$ 
 
 O ganho de informação deve ser maximizado.
 
 ### Impureza de Gini
-A impureza de Gini calcula a probabilidade de que um elemento aleatório dos dados seja classificado incorretamente, se for classificado aleatoriamente. Se tivermos K classes e $p_k$ for a proporção da classe $k$, para calculá-la:
+A impureza de Gini calcula a probabilidade de que um elemento aleatório dos dados seja classificado incorretamente, se for classificado aleatoriamente. Se tivermos K classes e $$p_k$$ for a proporção da classe $$k$$, para calculá-la:
 
 $$ IG = \sum_{k=1}^K p_k (\sum_{j \not = k}p_j) = \sum_{k=1}^K p_k (1 - p_k) = 1- \sum_{k=1}^K p_k^2 $$
 

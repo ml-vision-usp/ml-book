@@ -55,7 +55,7 @@
 
 ## DEEP LEARNING
 
-[comment]: <> * [Camada convolucional](deep-learning/redes-convolucionais/camada-convolucional.md)
+* [Camada convolucional](deep-learning/redes-convolucionais/camada-convolucional.md)
 [comment]: <> * [Camada de pooling](deep-learning/redes-convolucionais/camada-de-pooling.md)
 [comment]: <> * [Redes Recorrentes](deep-learning/redes-recorrentes/README.md)
 [comment]: <> * [Attention](deep-learning/redes-recorrentes/attention.md)
