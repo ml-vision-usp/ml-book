@@ -58,9 +58,29 @@ Com um learning rate grande nós damos passos grandes em uma determinada direç�
 
 Importante dizer também que esse algoritmo, apesar de nos dar uma boa aproximação da "reta perfeita", ele dificilmente a encontrará, já que o learning rate que nós escolhemos dificilmente será o learning rate perfeito que nos levará exatamente para o ponto mínimo.
 
+O exemplo que utilizamos possui apenas dois coeficientes e pode ser trabalhado utilizando apenas uma reta. Todavia, a regressão linear pode ser utilizada para dados que vão além de duas dimensões apenas, o que significa que não encontraremos apenas retas, mas hiperplanos.
+
 ## Uma solução exata
 
-Existe outra solução para o problema da regressão linear, a qual chamamos de solução analítica. Essa solução utiliza operações matriciais para encontrar de fato a reta perfeita, ao custo de que essa solução pode ser muito custosa dependendo da sua quantidade de pontos no conjunto de aprendizado.
+Existe outra solução para o problema da regressão linear, a qual chamamos de solução analítica. Essa solução utiliza operações matriciais para encontrar de fato a reta perfeita, ao custo de que essa solução pode ser muito demorada dependendo da sua quantidade de pontos no conjunto de aprendizado.
+
+Tomemos agora o nosso conjunto de dados como um vetor coluna $$\bold{x}$$, nossos pesos - coeficientes - como outro vetor coluna $$\bold{w}$$, e nossa reta, ou modelo, como $$h(x)$$. Desse modo, temos $$h(\bold{x}) = \sum_{i=0}{N}w_ix_i=\bold{w}^T\bold{x}$$. Nossa função de erro agora pode ser escrita como:
+
+$$
+Erro(\bold{w}) = \frac{1}{N} \sum_{i=0}^{N} (\bold{w}^{T}x_i - y_i)^2 
+$$
+$$
+Erro(\bold{w}) = \frac{1}{N} ||\bold{xw}^{T} - \bold{y}||
+$$
+$$
+Erro(\bold{w}) = \frac{1}{N} (\bold{wx}^{T}\bold{x}\bold{x}^T - 2\bold{w}^{T}\bold{x}^{T}\bold{y} + \bold{y}^{T}\bold{y})
+$$
+
+Desse modo, nosso gradiente fica:
+
+$$
+\nabla Erro(\bold{w}) = \frac
+$$
 
 ### Contribuições
 
