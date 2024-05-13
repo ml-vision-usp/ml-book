@@ -64,27 +64,28 @@ O exemplo que utilizamos possui apenas dois coeficientes e pode ser trabalhado u
 
 Existe outra solução para o problema da regressão linear, a qual chamamos de solução analítica. Essa solução utiliza operações matriciais para encontrar de fato a reta perfeita, ao custo de que essa solução pode ser muito demorada dependendo da sua quantidade de pontos no conjunto de aprendizado.
 
-Tomemos agora o nosso conjunto de dados como um vetor coluna $$\bold{x}$$, nossos pesos - coeficientes - como outro vetor coluna $$\bold{w}$$, e nossa reta, ou modelo, como $$h(x)$$. Desse modo, temos $$h(\bold{x}) = \sum_{i=0}{N}w_ix_i=\bold{w}^T\bold{x}$$. Nossa função de erro agora pode ser escrita como:
+Tomemos agora o nosso conjunto de dados como uma matriz $$X$$, nossos pesos - coeficientes - como outro vetor coluna $$\bold{w}$$, e nossa reta, ou modelo, como $$h(x)$$. Desse modo, temos $$h(\bold{x}) = \sum_{i=0}{N}w_ix_i=\bold{w}^T\bold{x}$$. Nossa função de erro agora pode ser escrita como:
 
 $$
 Erro(\bold{w}) = \frac{1}{N} \sum_{i=0}^{N} (\bold{w}^{T}x_i - y_i)^2 
 $$
 $$
-Erro(\bold{w}) = \frac{1}{N} ||\bold{xw}^{T} - \bold{y}||
+Erro(\bold{w}) = \frac{1}{N} ||X\bold{w}^{T} - \bold{y}||
 $$
 $$
-Erro(\bold{w}) = \frac{1}{N} (\bold{wx}^{T}\bold{x}\bold{x}^T - 2\bold{w}^{T}\bold{x}^{T}\bold{y} + \bold{y}^{T}\bold{y})
+Erro(\bold{w}) = \frac{1}{N} (\bold{w}X^{T}XX^T - 2\bold{w}^{T}X^{T}\bold{y} + \bold{y}^{T}\bold{y})
 $$
 
 Desse modo, nosso gradiente fica:
 
 $$
-\nabla Erro(\bold{w}) = \frac
+\nabla Erro(\bold{w}) = \frac{2}{N}(X^TX\bold{w} - X^T\bold{y})
 $$
 
+Para que o gradiente seja zero, basta encontrarmos $$\bold{w}$$ que satisfaça $$X^TX\bold{w} = X^T\bold{y}$$. Se $$X^TX$$ for invertível, então $$\bold{w} = (X^TX)^{-1}X^T\bold{y}$$.
 ### Contribuições
 
 Kaique Oliveira
 
 #### Referências
-
+"Learning from data" - Mostafa
