@@ -2,7 +2,7 @@
 
 * [Overview](README.md)
 
-[comment]: <> ## CONCEITOS INICIAIS
+## CONCEITOS INICIAIS
 
 [comment]: <> * [Aprendizado a partir de dados](conceitos-iniciais/aprendizado-a-partir-de-dados/README.md)
 [comment]: <> * [Abstração do aprendizado](conceitos-iniciais/aprendizado-a-partir-de-dados/abstracao-do-aprendizado.md)
@@ -11,13 +11,12 @@
 [comment]: <> * [Otimização](conceitos-iniciais/funcao-de-perda/otimizacao.md)
 [comment]: <> * [Gradiente Descendente](conceitos-iniciais/funcao-de-perda/gradiente-descendente.md)
 [comment]: <> * [Máxima Variação](conceitos-iniciais/funcao-de-perda/maxima-variacao.md)
-
-[comment]: <> ## Algoritmos básicos
+## Algoritmos básicos
 
 [comment]: <> * [Regressão Linear](algoritmos-basicos/regressao-linear.md)
 [comment]: <> * [Regressão Logística](algoritmos-basicos/regressao-logistica.md)
 [comment]: <> * [Regressão Logística Multinomial](algoritmos-basicos/regressao-logistica-multinomial.md)
-[comment]: <> * [Perceptron](algoritmos-basicos/perceptron.md)
+* [Perceptron](algoritmos-basicos/perceptron.md)
 
 ## MAIS ALGORITMOS
 
