@@ -2,7 +2,14 @@
 
 * [Overview](README.md)
 
-[comment]: <> ## CONCEITOS INICIAIS
+## CONCEITOS INICIAIS
+
+* [O que é Machine Leaning?](conceitos-iniciais/o-que-e-machine-learning/o-que-e-machine-learning.md)
+
+* [O Aprendizado é Possível?](conceitos-iniciais/o-que-e-machine-learning/o-aprendizado-e-possivel.md)
+
+* [Tipos de Aprendizado](conceitos-iniciais/o-que-e-machine-learning/tipos-de-aprendizado.md)
+
 
 [comment]: <> * [Aprendizado a partir de dados](conceitos-iniciais/aprendizado-a-partir-de-dados/README.md)
 [comment]: <> * [Abstração do aprendizado](conceitos-iniciais/aprendizado-a-partir-de-dados/abstracao-do-aprendizado.md)
@@ -11,13 +18,12 @@
 [comment]: <> * [Otimização](conceitos-iniciais/funcao-de-perda/otimizacao.md)
 [comment]: <> * [Gradiente Descendente](conceitos-iniciais/funcao-de-perda/gradiente-descendente.md)
 [comment]: <> * [Máxima Variação](conceitos-iniciais/funcao-de-perda/maxima-variacao.md)
+## Algoritmos básicos
 
-[comment]: <> ## Algoritmos básicos
-
-[comment]: <> * [Regressão Linear](algoritmos-basicos/regressao-linear.md)
-[comment]: <> * [Regressão Logística](algoritmos-basicos/regressao-logistica.md)
+* [Regressão Linear](algoritmos-basicos/regressao-linear.md)
+* [Regressão Logística](algoritmos-basicos/regressao-logistica.md)
 [comment]: <> * [Regressão Logística Multinomial](algoritmos-basicos/regressao-logistica-multinomial.md)
-[comment]: <> * [Perceptron](algoritmos-basicos/perceptron.md)
+* [Perceptron](algoritmos-basicos/perceptron.md)
 
 ## MAIS ALGORITMOS
 
