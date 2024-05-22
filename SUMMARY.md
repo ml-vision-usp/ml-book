@@ -4,6 +4,13 @@
 
 ## CONCEITOS INICIAIS
 
+* [O que é Machine Leaning?](conceitos-iniciais/o-que-e-machine-learning/o-que-e-machine-learning.md)
+
+* [O Aprendizado é Possível?](conceitos-iniciais/o-que-e-machine-learning/o-aprendizado-e-possivel.md)
+
+* [Tipos de Aprendizado](conceitos-iniciais/o-que-e-machine-learning/tipos-de-aprendizado.md)
+
+
 [comment]: <> * [Aprendizado a partir de dados](conceitos-iniciais/aprendizado-a-partir-de-dados/README.md)
 [comment]: <> * [Abstração do aprendizado](conceitos-iniciais/aprendizado-a-partir-de-dados/abstracao-do-aprendizado.md)
 [comment]: <> * [Modelo linear](conceitos-iniciais/modelo-linear.md)
