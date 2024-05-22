@@ -79,7 +79,7 @@ $$
 Desse modo, nosso gradiente fica:
 
 $$
-\nabla Erro(\bold{w}) = \frac{2}{N}(X^TX\bold{w} - X^T\bold{y})
+\\nabla Erro(\bold{w}) = \frac{2}{N}(X^TX\bold{w} - X^T\bold{y})
 $$
 
 Para que o gradiente seja zero, basta encontrarmos $$\bold{w}$$ que satisfaça $$X^TX\bold{w} = X^T\bold{y}$$. Se $$X^TX$$ for invertível, então $$\bold{w} = (X^TX)^{-1}X^T\bold{y}$$.

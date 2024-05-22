@@ -20,10 +20,11 @@
 [comment]: <> * [Máxima Variação](conceitos-iniciais/funcao-de-perda/maxima-variacao.md)
 ## Algoritmos básicos
 
-* [Regressão Linear](algoritmos-basicos/regressao-linear.md)
-* [Regressão Logística](algoritmos-basicos/regressao-logistica.md)
-[comment]: <> * [Regressão Logística Multinomial](algoritmos-basicos/regressao-logistica-multinomial.md)
+* [Regressão Linear](regressao-linear/regressao-linear.md)
+* [Regressão Logística](regressao-logistica/regressao-logistica.md)
 * [Perceptron](algoritmos-basicos/perceptron.md)
+
+[comment]: <> * [Regressão Logística Multinomial](algoritmos-basicos/regressao-logistica-multinomial.md)
 
 ## MAIS ALGORITMOS
 
