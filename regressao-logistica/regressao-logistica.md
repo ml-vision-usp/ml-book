@@ -46,9 +46,10 @@ $$
 
 Assim como fizemos na regressão linear, a minimização da nossa função de erro será feita utilizando o gradiente descendente. O primeiro passo a ser dado é encontrar o vetor gradiente da nossa função de erro em relação ao vetor de pesos $$\bold{w}$$, o qual é:
 
-$$\nabla Erro(\bold{w}) = -\frac{1}{N}\sum_{i=1}^{N}\frac{y_i\bold{x}_i}{1+e^{y_i\bold{w}^T\bold{x}_i}}$$
-$$
-    \\nabla Erro(\bold{w}) = \frac{1}{N}\sum_{i=1}^{N}-y_i\bold{x}_i\theta(-y_i\bold{w}^T\bold{x}_i))
+$$\newcommand{\sad}{\nabla}
+\sad Erro(\bold{w}) = -\frac{1}{N}\sum_{i=1}^{N}\frac{y_i\bold{x}_i}{1+e^{y_i\bold{w}^T\bold{x}_i}}$$
+$$\newcommand{\sad}{\nabla}
+    \sad Erro(\bold{w}) = \frac{1}{N}\sum_{i=1}^{N}-y_i\bold{x}_i\theta(-y_i\bold{w}^T\bold{x}_i))
 $$
 
 Desse modo, podemos seguir com o algoritmo do gradiente descendente e assim encontramos nossos pesos.
