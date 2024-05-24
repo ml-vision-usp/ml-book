@@ -52,7 +52,7 @@ $$b = b - \alpha \frac{d}{db}Erro$$
 
 Repetimos esse processo até que nossa função de erro assuma um valor pequeno que nós escolhemos, esse valor idealmente é zero. O $$\alpha$$ é o que chamamos de *Learning Rate*, ele determina o tamanho do passo que damos em cada iteração, o que é muito importante para que consigamos convergir para o ponto onde o erro é mínimo. Note: 
 
-![](.\imagens\learning-rate.png)
+![](./imagens/learning-rate.png)
 
 Com um learning rate grande nós damos passos grandes em uma determinada direção, o que pode até ser bom em alguns casos ou momentos e ajude a convergir mais rapidamente, porém ele pode acabar atrapalhando também, como é o caso da imagem. Já com o learning rate pequeno temos passos menores, o que nos dá maior confiança de que não passaremos do ponto mínimo, porém ele pode aumentar o número de iterações necessárias para chegar lá.
 
