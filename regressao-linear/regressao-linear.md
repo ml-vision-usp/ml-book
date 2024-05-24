@@ -6,7 +6,7 @@ A regressão linear é um dos primeiros tópicos que estudantes de aprendizado d
 
 Imagine que você possui uma série de pontos em um gráfico, esses pontos formam o nosso conjunto de dados de aprendizado, a ideia por trás da regressão linear é encontrar a reta que mais se aproxima da distribuição dos nossos pontos. Exemplificando:
 
-![](.\imagens\exemplo-reta.png)
+![](./imagens/exemplo-reta.png)
 
 Aparentemente, a reta se ajusta bem à distribuição de dados, o que é verdade, mas precisamos primeiro definir a métrica que nos permite comparar duas retas e dizer qual delas melhor se "ajusta" à distribuição de dados. Imagine que nossa reta genérica é de formato $$ f(x) = ax+b $$ e nosso conjunto de dados é formado por pontos $$(x_i,y_i)$$, poderíamos adotar como métrica simplesmente a soma do erro para cada ponto, o que nos daria:
 
