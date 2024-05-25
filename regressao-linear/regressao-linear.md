@@ -10,22 +10,31 @@ Imagine que você possui uma série de pontos em um gráfico, esses pontos forma
 
 Aparentemente, a reta se ajusta bem à distribuição de dados, o que é verdade, mas precisamos primeiro definir a métrica que nos permite comparar duas retas e dizer qual delas melhor se "ajusta" à distribuição de dados. Imagine que nossa reta genérica é de formato $$ f(x) = ax+b $$ e nosso conjunto de dados é formado por pontos $$(x_i,y_i)$$, poderíamos adotar como métrica simplesmente a soma do erro para cada ponto, o que nos daria:
 
-$$Erro = f(x_0) - y_0 + f(x_1) - y_1 + ...$$
-$$Erro = \sum_{i = 0}^{N}f(x_i) - y_i$$
+$$
+    Erro = f(x_0) - y_0 + f(x_1) - y_1 + ...
+    \implies
+    Erro = \sum_{i = 0}^{N}f(x_i) - y_i
+$$
 
 Todavia, note que se nosso conjunto de dados fosse formado por $$(1,2)$$ e $$(2,-2)$$, e também nossa reta tivesse como resultados $$f(1) = 0$$ e $$f(2)=0$$, nosso erro final seria:
 
-$$Erro = (0 - 2) + (0 - (-2)) = -2 + 2 = 0$$
+$$
+    Erro = (0 - 2) + (0 - (-2)) = -2 + 2 = 0
+$$
 
 Ou seja, essa métrica acaba não sendo muito útil devido ao fato dela abrir margem para que um erro possa anular outro e nos impedir de perceber que uma reta candidata é uma má reta. Desse modo, podemos adicionar um quadrado nos termos do somatório, desse modo todos os erros ficam positivos e temos uma noção melhor do que está acontecendo, chamamos esse erro de erro quadrático . Assim sendo:
 
-$$Erro = \sum_{i=0}^{N} (f(x_i) - y_i)^2 $$
+$$
+    Erro = \sum_{i=0}^{N} (f(x_i) - y_i)^2
+$$
 
 Porém, imagine que sua quantidade de pontos é muito grande. Em um computador, talvez uma soma de quadrados tão grande possa acarretar em overflow ou acarretar no acúmulo de erros de precisão. Desse modo, é interessante que, ao invés de utilizarmos o erro quadrático simples, seja utilizado o erro quadrático médio - *Mean Squared Error (MSE)*:
 
-$$Erro = \frac{\sum_{i=0}^{N} (f(x_i) - y_i)^2}{N}$$
+$$
+    Erro = \frac{\sum_{i=0}^{N} (f(x_i) - y_i)^2}{N}
+$$
 
-Com a nossa métrica de erro estabelecida, finalmente podemos comparar retas e formalizar nosso objetivo: encontrar uma reta que minimiza o erro quadrático médio.
+Com a nossa métrica de erro estabelecida, finalmente podemos comparar retas e formalizar nosso objetivo: **encontrar uma reta que minimiza o erro quadrático médio**.
 
 ## Quando o erro é mínimo
 
@@ -33,13 +42,21 @@ Na matéria de cálculo é aprendido o que é o gradiente de uma função, um co
 
 Para calcular o vetor gradiente precisamos encontrar as derivadas parciais de uma função. Relembrando nossa função de erro:
 
-$$Erro = \frac{1}{N} \sum^{N}_{i=0}(f(x_i)-y_i)^2$$
-$$Erro = \frac{1}{N} \sum^{N}_{i=0}((ax_i+b)-y_i)^2$$
+$$
+    Erro = \frac{1}{N} \sum^{N}_{i=0}(f(x_i)-y_i)^2 
+    \implies
+    Erro = \frac{1}{N} \sum^{N}_{i=0}((ax_i+b)-y_i)^2 
+$$
 
 Desse nodo, nossas derivadas parciais em a e b são:
 
-$$\frac{d}{da}Erro = \frac{2}{N}\sum_{i=0}^{N}x_i(f(x_i)-y_i)$$
-$$\frac{d}{db}Erro = \frac{2}{N}\sum_{i=0}^{N}(f(x_i)-y_i)$$
+$$
+    \frac{\partial Erro}{\partial a} = \frac{2}{N}\sum_{i=0}^{N}x_i(f(x_i)-y_i)
+$$
+
+$$
+    \frac{\partial Erro}{\partial b} = \frac{2}{N}\sum_{i=0}^{N}(f(x_i)-y_i)
+$$
 
 Resta encontrar os coeficientes, ou pesos, a e b que levem ambas as derivadas parciais para zero, assim teremos encontrado a melhor reta possível. Para encontrar esses pesos, iremos utilizar um algoritmo muito importante chamado Gradiente Descendente.  
 
@@ -47,8 +64,13 @@ Resta encontrar os coeficientes, ou pesos, a e b que levem ambas as derivadas pa
 
 A ideia por trás do algoritmo Gradiente Descendente na verdade é bem simples: dado que o vetor gradiente aponta para a direção de maior crescimento de uma função, então seu inverso deve apontar para uma direção de decrescimento. Encontradas as derivadas parciais, podemos atualizar o valor dos nossos conjuntos de pesos:  
 
-$$a = a - \alpha \frac{d}{da}Erro$$
-$$b = b - \alpha \frac{d}{db}Erro$$
+$$
+    a = a - \alpha \frac{\partial Erro}{\partial a}
+$$
+
+$$
+    b = b - \alpha \frac{\partial Erro}{\partial b}
+$$
 
 Repetimos esse processo até que nossa função de erro assuma um valor pequeno que nós escolhemos, esse valor idealmente é zero. O $$\alpha$$ é o que chamamos de *Learning Rate*, ele determina o tamanho do passo que damos em cada iteração, o que é muito importante para que consigamos convergir para o ponto onde o erro é mínimo. Note: 
 
@@ -67,25 +89,27 @@ Existe outra solução para o problema da regressão linear, a qual chamamos de 
 Tomemos agora o nosso conjunto de dados como uma matriz $$X$$, nossos pesos - coeficientes - como outro vetor coluna $$\bold{w}$$, e nossa reta, ou modelo, como $$h(x)$$. Desse modo, temos $$h(\bold{x}) = \sum_{i=0}{N}w_ix_i=\bold{w}^T\bold{x}$$. Nossa função de erro agora pode ser escrita como:
 
 $$
-Erro(\bold{w}) = \frac{1}{N} \sum_{i=0}^{N} (\bold{w}^{T}x_i - y_i)^2 
+    Erro(\bold{w}) = \frac{1}{N} \sum_{i=0}^{N} (\bold{w}^{T}x_i - y_i)^2 
 $$
+
 $$
-Erro(\bold{w}) = \frac{1}{N} ||X\bold{w}^{T} - \bold{y}||
+    Erro(\bold{w}) = \frac{1}{N} ||X\bold{w}^{T} - \bold{y}||
 $$
+
 $$
-Erro(\bold{w}) = \frac{1}{N} (\bold{w}X^{T}XX^T - 2\bold{w}^{T}X^{T}\bold{y} + \bold{y}^{T}\bold{y})
+    Erro(\bold{w}) = \frac{1}{N} (\bold{w}X^{T}XX^T - 2\bold{w}^{T}X^{T}\bold{y} + \bold{y}^{T}\bold{y})
 $$
 
 Desse modo, nosso gradiente fica:
 
 $$
-\\nabla Erro(\bold{w}) = \frac{2}{N}(X^TX\bold{w} - X^T\bold{y})
+\nabla Erro(\bold{w}) = \frac{2}{N}(X^TX\bold{w} - X^T\bold{y})
 $$
 
 Para que o gradiente seja zero, basta encontrarmos $$\bold{w}$$ que satisfaça $$X^TX\bold{w} = X^T\bold{y}$$. Se $$X^TX$$ for invertível, então $$\bold{w} = (X^TX)^{-1}X^T\bold{y}$$.
-### Contribuições
+## Contribuições
 
 Kaique Oliveira
 
-#### Referências
+## Referências
 "Learning from data" - Mostafa

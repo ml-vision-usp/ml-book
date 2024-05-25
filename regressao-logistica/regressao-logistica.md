@@ -56,3 +56,6 @@ $$
 
 
 Desse modo, podemos seguir com o algoritmo do gradiente descendente e assim encontramos nossos pesos.
+
+## Contribuições
+Kaique Oliveira
