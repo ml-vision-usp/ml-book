@@ -38,23 +38,53 @@ Com a nossa métrica de erro estabelecida, finalmente podemos comparar retas e f
 
 ## Quando o erro é mínimo
 
-Na matéria de cálculo é aprendido o que é o gradiente de uma função, um conceito essencial não só para a regressão linear, mas também para a área de aprendizado de máquina como um todo, especialmente no que se refere a redes neurais. Simplificando, o gradiente de uma função indica a direção e a taxa de variação máxima de uma função em um determinado ponto. Desse modo, quando o gradiente de uma função é zero em um determinado ponto, isso significa que aquele ponto é crítico, isso é: ou aquele ponto é máximo (local ou global), ou é mínimo (local ou global), ou é um ponto de sela. Como nossa função de erro é estritamente positiva, então sabemos que o ponto onde o gradiente dela é zero é o erro mínimo que podemos chegar.
+Na matéria de cálculo é aprendido o que é o gradiente de uma função, um conceito essencial não só para a regressão linear, mas também para a área de aprendizado de máquina como um todo, especialmente no que se refere a redes neurais, que é um tópico muito importante na área e que será apresentado no futuro. Simplificando, o vetor gradiente de uma função indica a direção e a taxa de variação máxima de uma função em um determinado ponto, ou seja: a direção que a função cresce mais rápido em determinado ponto. Desse modo, quando o gradiente de uma função é zero em um determinado ponto, isso significa que aquele ponto é crítico, isso é: ou aquele ponto é máximo (local ou global), ou é mínimo (local ou global), ou é um ponto de sela, para funções $$\mathbb{R}^2 \rightarrow \mathbb{R}$$. Como nossa função de erro é estritamente positiva, então sabemos que o ponto onde o gradiente dela é zero é o erro mínimo que podemos chegar.
 
 Para calcular o vetor gradiente precisamos encontrar as derivadas parciais de uma função. Relembrando nossa função de erro:
 
 $$
     Erro = \frac{1}{N} \sum^{N}_{i=0}(f(x_i)-y_i)^2 
     \implies
-    Erro = \frac{1}{N} \sum^{N}_{i=0}((ax_i+b)-y_i)^2 
+    Erro = \frac{1}{N} \sum^{N}_{i=0}((ax_i+b)-y_i)^2
 $$
 
-Desse nodo, nossas derivadas parciais em a e b são:
+Abrindo o quadrado:
+$$
+    Erro = \frac{1}{N} \sum^{N}_{i=0}((ax_i+b)^2- 2(ax_i+b)y_i+y_i^2) \implies
+    Erro = \frac{1}{N} \sum^{N}_{i=0}(a^2x_i^2+2ax_ib+b^2 - 2ax_iy_i - 2by_i + y_i^2) 
+$$
+
+Desse modo, calculando a derivada parcial da função de erro em $$a$$:
 
 $$
-    \frac{\partial Erro}{\partial a} = \frac{2}{N}\sum_{i=0}^{N}x_i(f(x_i)-y_i)
+    \frac{\partial Erro}{\partial a} = \frac{1}{N} \sum^{N}_{i=0}(2x_i^2a + 2x_ib - 2x_iy_i)
+    \implies
+    \frac{\partial Erro}{\partial a} = \frac{2}{N} \sum^{N}_{i=0}(x_i^2a + x_ib - x_iy_i)
 $$
 
 $$
+    \frac{\partial Erro}{\partial a} = \frac{2}{N} \sum^{N}_{i=0}(x_i^2a + x_ib - x_iy_i)
+    \implies
+    \frac{\partial Erro}{\partial a} = \frac{2}{N} \sum^{N}_{i=0}x_i(x_ia + b - y_i)
+$$
+
+$$
+    \frac{\partial Erro}{\partial a} = \frac{2}{N} \sum^{N}_{i=0}x_i(x_ia + b - y_i)
+    \implies
+    \frac{\partial Erro}{\partial a} = \frac{2}{N} \sum^{N}_{i=0}x_i(f(x_i) - y_i)
+$$
+
+Agora, calculando a derivada parcial da função de erro em $$b$$:
+
+$$
+    \frac{\partial Erro}{\partial b} = \frac{1}{N} \sum^{N}_{i=0}(2ax_i+2b-2y_i)
+    \implies
+    \frac{\partial Erro}{\partial b} = \frac{2}{N} \sum^{N}_{i=0}(ax_i + b - y_i)
+$$
+
+$$
+    \frac{\partial Erro}{\partial b} = \frac{2}{N} \sum^{N}_{i=0}(ax_i + b - y_i)
+    \implies
     \frac{\partial Erro}{\partial b} = \frac{2}{N}\sum_{i=0}^{N}(f(x_i)-y_i)
 $$
 
@@ -62,7 +92,7 @@ Resta encontrar os coeficientes, ou pesos, a e b que levem ambas as derivadas pa
 
 ## Minimizando o erro
 
-A ideia por trás do algoritmo Gradiente Descendente na verdade é bem simples: dado que o vetor gradiente aponta para a direção de maior crescimento de uma função, então seu inverso deve apontar para uma direção de decrescimento. Encontradas as derivadas parciais, podemos atualizar o valor dos nossos conjuntos de pesos:  
+A ideia por trás do algoritmo Gradiente Descendente na verdade é bem simples: dado que o vetor gradiente aponta para a direção de maior crescimento de uma função, então seu inverso deve apontar para uma direção de decrescimento. Encontradas as derivadas parciais, podemos atualizar o valor dos nossos conjuntos de pesos, com $$\alpha$$ sendo um número real positivo, da seguinte forma :  
 
 $$
     a = a - \alpha \frac{\partial Erro}{\partial a}
@@ -76,9 +106,9 @@ Repetimos esse processo até que nossa função de erro assuma um valor pequeno 
 
 ![](./imagens/learning-rate.png)
 
-Com um learning rate grande nós damos passos grandes em uma determinada direção, o que pode até ser bom em alguns casos ou momentos e ajude a convergir mais rapidamente, porém ele pode acabar atrapalhando também, como é o caso da imagem. Já com o learning rate pequeno temos passos menores, o que nos dá maior confiança de que não passaremos do ponto mínimo, porém ele pode aumentar o número de iterações necessárias para chegar lá.
+Na imagem acima temos a curva como sendo o gráfico da nossa função de erro, onde o eixo vertical é o valor da nossa função de erro enquanto o eixo horizontal representa os valores de um determinado parâmetro da função de erro, e a seta vermelha é o vetor inverso do nosso vetor gradiente multiplicado por um determinado learning rate. Assim sendo, com um learning rate grande nós damos passos grandes em uma determinada direção em cada atualização de valor do parâmetro, com os passos sendo representados pelas setas vermelhas, o que pode até ser bom em alguns casos ou momentos e ajude a convergir mais rapidamente, porém ele pode acabar atrapalhando também, como é o caso esquerdo da imagem. Já com o learning rate pequeno temos passos menores, o que nos dá maior confiança de que não passaremos do ponto mínimo, porém ele pode aumentar o número de iterações necessárias para chegar lá.
 
-Importante dizer também que esse algoritmo, apesar de nos dar uma boa aproximação da "reta perfeita", ele dificilmente a encontrará, já que o learning rate que nós escolhemos dificilmente será o learning rate perfeito que nos levará exatamente para o ponto mínimo.
+É importante dizer também que esse algoritmo, apesar de nos dar uma boa aproximação da "reta perfeita", ele dificilmente a encontrará, já que o learning rate que nós escolhemos dificilmente será o learning rate perfeito que nos levará exatamente para o ponto mínimo.
 
 O exemplo que utilizamos possui apenas dois coeficientes e pode ser trabalhado utilizando apenas uma reta. Todavia, a regressão linear pode ser utilizada para dados que vão além de duas dimensões apenas, o que significa que não encontraremos apenas retas, mas hiperplanos.
 
@@ -86,14 +116,20 @@ O exemplo que utilizamos possui apenas dois coeficientes e pode ser trabalhado u
 
 Existe outra solução para o problema da regressão linear, a qual chamamos de solução analítica. Essa solução utiliza operações matriciais para encontrar de fato a reta perfeita, ao custo de que essa solução pode ser muito demorada dependendo da sua quantidade de pontos no conjunto de aprendizado.
 
-Tomemos agora o nosso conjunto de dados como uma matriz $$X$$, nossos pesos - coeficientes - como outro vetor coluna $$\bold{w}$$, e nossa reta, ou modelo, como $$h(x)$$. Desse modo, temos $$h(\bold{x}) = \sum_{i=0}{N}w_ix_i=\bold{w}^T\bold{x}$$. Nossa função de erro agora pode ser escrita como:
+Tomemos agora o nosso conjunto de dados como uma matriz $$X$$, nossos pesos - coeficientes - como outro vetor coluna $$\bold{w}$$, e nossa reta, ou modelo, como $$h(x)$$. Desse modo, temos: 
 
 $$
-    Erro(\bold{w}) = \frac{1}{N} \sum_{i=0}^{N} (\bold{w}^{T}x_i - y_i)^2 
+    h(\bold{x}) = \sum_{i=0}^{N}w_ix_i=\bold{w}^T\bold{x}
+$$ 
+
+Nossa função de erro agora pode ser escrita como:
+
+$$
+    Erro(\bold{w}) = \frac{1}{N} \sum_{i=0}^{N} (\bold{w}^{T}\bold{x}_i - y_i)^2 
 $$
 
 $$
-    Erro(\bold{w}) = \frac{1}{N} ||X\bold{w}^{T} - \bold{y}||
+    Erro(\bold{w}) = \frac{1}{N} ||X\bold{w} - \bold{y}||^2
 $$
 
 $$
@@ -106,7 +142,7 @@ $$
 \nabla Erro(\bold{w}) = \frac{2}{N}(X^TX\bold{w} - X^T\bold{y})
 $$
 
-Para que o gradiente seja zero, basta encontrarmos $$\bold{w}$$ que satisfaça $$X^TX\bold{w} = X^T\bold{y}$$. Se $$X^TX$$ for invertível, então $$\bold{w} = (X^TX)^{-1}X^T\bold{y}$$.
+Para que o gradiente seja zero, basta encontrarmos $$\bold{w}$$ que satisfaça $$X^TX\bold{w} = X^T\bold{y}$$. Desse modo, temos $$\bold{w} = (X^TX)^{-1}X^T\bold{y}$$.
 ## Contribuições
 
 Kaique Oliveira
