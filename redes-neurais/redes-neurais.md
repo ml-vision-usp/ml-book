@@ -206,6 +206,24 @@ $$
 $$
     \bold{\delta}^{(L)}= 2(\mathbf{x}^{(L)} - y)\frac{\partial\mathbf{x}^{(L)}}{\partial\mathbf{s}^{(L)}}
 $$
+
 $$
     \bold{\delta}^{(L)} = 2(\mathbf{x}^{(L)} - y)\sigma'(\mathbf{s}^{(L)})
 $$
+
+Em resumo, backpropagation é um algoritmo que computa os vetores de sensitividade após o forward propagation ter processado um ponto do conjunto de dados de treinamento. Você pode ver um exemplo do algoritmo na próxima imagem, o qual utiliza a soma dos quadrados como função de custo e a tangente hiperbólica como função de ativação:
+
+![](.\imagens\back_alg.png)
+
+Agora, com o forward propagation e o backpropagation, a rede neural consegue encontrar os gradientes:
+
+![](.\imagens\gradients_alg.png)
+
+Para atualizar os pesos para uma única iteração do gradiente descendente com learning rate fixo, basta fazer $$W^{(l)} \leftarrow W^{(l)} - \eta G^{(l)}$$, for $$l = 1,...,L$$. Existem diversos detalhes sobre como aperfeiçoar os algoritmos aqui mostrados, e nós os abordaremos em outros capítulos. Todavia, o que aqui foi mostrado é a base teórica de diversos modelos da área de aprendizado de máquina e, por ora, é o bastante.
+
+## Contribuições
+
+Kaique Oliveira
+
+## Referências
+"Learning From Data" - Mostafa
