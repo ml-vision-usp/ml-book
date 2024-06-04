@@ -28,4 +28,32 @@ Para expandir nossa notação, agora olharemos uma relação entre dois nós:
 
 ![](.\imagens\relacao_2_nos.png)
 
-Observe que o nó $$j$$ possui um sinal $$s$$ de entrada com uma saída $$x$$, baseado nisso nós criaremos dois vetores: o vetor $$s^{(l)}$$ e o vetor $$\bold{x}^{(l)}$$. O primeiro vetor - $$s^{(l)}$$ - será o vetor sinal, ele representa os sinais de entrada recebidos pelos nós $$1,2,...,d^{(l)}$$ da camada $$l$$ - lembre-se que o nó zero não possui nenhum sinal de entrada. Já o segundo vetor - $$\bold{x}^{(l)}$$ - 
+Observe que o nó $$j$$ possui um sinal $$s$$ de entrada com uma saída $$x$$, baseado nisso nós criaremos dois vetores: o vetor $$\bold{s}^{(l)}$$ e o vetor $$\bold{x}^{(l)}$$. O primeiro vetor - $$\bold{s}^{(l)}$$ - será o vetor sinal, ele representa os sinais de entrada recebidos pelos nós $$1,2,...,d^{(l)}$$ da camada $$l$$ - lembre-se que o nó zero não possui nenhum sinal de entrada. Já o segundo vetor - $$\bold{x}^{(l)}$$ - representa as saídas dos neurônios $$0,1,2,...,d^{(l)}$$ da camada $$l$$. Desse modo, a entrada $$s_{j}^{(l)}$$ é o sinal de entrada do nó $$j$$ da camada $$l$$, enquanto $$x_{j}^{(l)}$$ é a saída do nó $$j$$ da camada $$l$$.
+
+Também precisamos de uma representação para os pesos. Dado que há conexões ligando as saídas de todos os nós da camada $$l-1$$ às entradas da camada $$l$$, podemos construir uma matriz de pesos $$W^{(l)}$$ de dimensões $$(d^{(l-1)} + 1) \times d^{(l)}$$. Além disso, cada elemento $$w_{ij}^{(l)}$$ da matriz $$W^{(l)}$$ é o peso que conecta o nó $$i$$ da camada $$l-1$$ ao nó $$j$$ da camada $$l$$. Portanto, nosso conjunto de matrizes $$\bold{w} = \{W^{(1)}, W^{(2)}, W^{(3)},...,W^{(L)}\}$$ reúne os parâmetros do modelo.
+
+## Forward Propagation
+
+Observe que, para conseguirmos construir o vetor de entradas da camada $$l$$, nós computamos a soma ponderada pelos pesos sobre as saídas da camada anterior. Ou seja, dados os pesos $$W^{(l)}$$, temos $$s_{j}^{(l)} = \sum_{i=0}^{d(l-1)}w_{ij}^{(l)}x_{i}^{(l-1)}$$. Este processo pode ser representado pela equação matricial:
+
+$$
+    \bold{s}^{(l)} = (W^{(l)})^{T}\bold{x}^{(l-1)}
+$$
+
+Computado o vetor $$s^{(l)}$$, podemos agora encontrar o vetor $$\bold{x}^{(l)}$$ dando o seguinte passo:
+
+$$
+    \bold{x} = 
+        \begin{bmatrix}
+            1 \\
+            \theta(\bold{s}^{(l)}) 
+        \end{bmatrix}
+$$
+
+Assim senedo, o algorítmo Forward Propagation pode ser representado pela cadeia de eventos:
+
+$$
+    \bold{x} = \bold{x}^{(0)}\xrightarrow{W^{(1)}}\bold{s}^{(1)}\xrightarrow{\theta}\bold{x}^{(1)}...\rightarrow\bold{s}^{(L)}\xrightarrow{\theta}\bold{x}^{(L)} = h(\bold{x})
+$$
+
+Com $$h(\bold{x})$$ sendo a saída do nosso modelo dada a entrada $$\bold{x}$$.
