@@ -23,8 +23,8 @@
 * [Regressão Linear](regressao-linear/regressao-linear.md)
 * [Regressão Logística](regressao-logistica/regressao-logistica.md)
 * [Perceptron](algoritmos-basicos/perceptron.md)
-
 [comment]: <> * [Regressão Logística Multinomial](algoritmos-basicos/regressao-logistica-multinomial.md)
+* [Perceptron](algoritmos-basicos/perceptron.md)
 
 ## MAIS ALGORITMOS
 
