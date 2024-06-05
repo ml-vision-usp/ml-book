@@ -109,7 +109,7 @@ $$
     Custo = - \frac{1}{N} \sum_{i=1}^{N} ln(\hat{y}_i^{y_i}) + ln((1-\hat{y}_i)^{1-y_i})
 $$
 
-Essa função de custo se chama **cross-entropy**, e ela possui como gradiente:
+Essa função de custo se chama **cross-entropy**, adicionamos a fração $$\frac{1}{N}$$ para normalizar o somatório dos custos - um modelo treinado com mais pontos pode apresentar um custo maior que um modelo treinado com poucos pontos devido apenas ao maior número de pontos daquele, e não devido a uma performance de maior qualidade desse. Assim sendo, dividir pelo número de pontos nos permite comparar melhor diferentes modelos . A cross-entropy possui como gradiente:
 
 $$
     \frac{\partial Custo}{\partial w_j} = \sum_{i=1}^{N}(\hat{y}_i - y_i)x_{ij}, j = 1,...,d
