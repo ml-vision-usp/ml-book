@@ -6,7 +6,7 @@ A regressão logística é um método que dialóga muito com problemas de classi
 
 ## Ideia Principal
 
-A regressão logística é um modelo linear, o que nos possibilita dizer que, assim como a regressão linear, ela é baseada em um sinal $$s = \bold{w}^{T}\bold{x}$$, com $$\bold{w}$$ sendo um vetor coluna de pesos e $$\bold{x}$$ sendo um vetor coluna que representa a entreda do nosso modelo. Nesse sentido, para que consigamos transformar esse sinal $$s$$ em um valor entre [0,1], uma forma possível é utilizar uma função logística $$\theta(s)$$ cujos resultados são limitados entre 0 e 1 e é definida como:
+A regressão logística é um modelo linear, o que nos possibilita dizer que, assim como a regressão linear, ela é baseada em um sinal $$s = \bold{w}^{T}\bold{x}$$, com $$\bold{w}$$ sendo um vetor coluna de pesos e $$\bold{x}$$ sendo um vetor coluna que representa a entrada do nosso modelo. Nesse sentido, para que consigamos transformar esse sinal $$s$$ em um valor entre [0,1], uma forma possível é utilizar uma função logística $$\theta(s)$$ cujos resultados são limitados entre 0 e 1 e é definida como:
 
 $$
     \theta(s) = \frac{e^s}{1+e^s}
