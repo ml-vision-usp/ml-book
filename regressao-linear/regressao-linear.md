@@ -138,9 +138,9 @@ $$
 
 Desse modo, nosso gradiente fica:
 
-$$
-\nabla Erro(\bold{w}) = \frac{2}{N}(X^TX\bold{w} - X^T\bold{y})
-$$
+ 
+<!-- ( \nabla Erro(\bold{w}) = \frac{2}{N}(X^TX\bold{w} - X^T\bold{y}) -->
+![](./imagens//nabla-1.png)
 
 Para que o gradiente seja zero, basta encontrarmos $$\bold{w}$$ que satisfaça $$X^TX\bold{w} = X^T\bold{y}$$. Desse modo, temos $$\bold{w} = (X^TX)^{-1}X^T\bold{y}$$.
 ## Contribuições
