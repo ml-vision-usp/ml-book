@@ -10,7 +10,7 @@ Os **neurônios** são responsáveis por receberem entradas (inputs), realizarem
 
 Antes de adentrar cada passo do processo de modo mais detalhado, primeiro será apresentado um resumo de todo o processo. Desse modo o leitor terá um panorama geral prévio antes de começar a ver cada tópico.
 
-Para começar, temos que saber que cada neurônio recebe como entrada uma soma ponderada pelos pesos e viéses sobre as saídas da camada anterior. O resultado dessa soma é então aplicada em uma **função de ativação**, com a saída dessa função sendo também a saída do neurônio. As funções de ativação são utilizadas nos neurônios para introduzir não=linearidade nas saídas das redes neurais, algumas das funções comumente utilizadas são a sigmoide, a ReLU, e a tangente hiperbólica. A escolha da função de ativação pode afetar a performance do modelo.
+Para começar, temos que saber que cada neurônio recebe como entrada uma soma ponderada pelos pesos e viéses sobre as saídas da camada anterior. O resultado dessa soma é então aplicada em uma **função de ativação**, com a saída dessa função sendo também a saída do neurônio. As funções de ativação são utilizadas nos neurônios para introduzir não-linearidade nas saídas das redes neurais. Algumas das funções comumente utilizadas são a sigmoide, a ReLU, e a tangente hiperbólica. A escolha da função de ativação pode afetar a performance do modelo.
 
 Assim sendo, o **forward propagation** é o primeiro passo do processo de aprendizagem, nele os dados fluem da **camada de entrada** (input layer) para a última camada passando pelas **camadas escondidas** (hidden layers). Cada um dos neurônios da primeira camada escondida recebe como entrada uma soma ponderada pelos pesos sobre os dados de entrada e o seu viés, e então as saídas de cada um desses neurônios, o que chamamos de **sinal**, são passadas para a próxima camada. Este processo se repete até chegarmos na última camada.
 
@@ -20,13 +20,13 @@ Depois do forward propagation, vem o back propagation, que é o algoritmo respon
 
 Para realmente entender a teoria por trás das Redes Neurais nós precisamos primeiro introduzir uma notação, utilizaremos a notação do livro do Mostafa:
 
-![](.\imagens\exemplo_rede_neural.png)
+![](./imagens/exemplo_rede_neural.png)
 
-As camadas são rotuladas por $$l = 0,1,2, ..., L$$ e, como podemos ver, a camada $$l = 0$$ é a nossa camada de entrada - interessante dizer que, dependendo da fonte, a camada de entrada nem sempre é vista como uma camada por si só. Além disso, as camadas $$l = 1,2,...,L-1$$ são as chamadas camadas escondidas. Neste capítulo utilizaremos este $$\text{índice}^{(l)}$$ para fazer referência a uma camada em específico. Podemos dizer também que camadas possuem dimensões $$d^{(l)}$$: se uma camada $$d^{(l)}$$, isso significa que uma camada $$l=3$$ possui $$d(l)+1$$ nós que são rotulados $$0,1,...,d^{(l)}$$. Note que, na nossa representação, o nó 0 representa o viés daquele nó, e ele sempre possui como saída o valor 1, com nenhum valor de entrada no nó. 
+As camadas são rotuladas por $$l = 0,1,2, ..., L$$ e, como podemos ver, a camada $$l = 0$$ é a nossa camada de entrada - interessante dizer que, dependendo da fonte, a camada de entrada nem sempre é vista como uma camada por si só. Além disso, as camadas $$l = 1,2,...,L-1$$ são as chamadas camadas escondidas. Neste capítulo utilizaremos este $$\text{índice}^{(l)}$$ para fazer referência a uma camada em específico. Podemos dizer também que camadas possuem dimensões $$d^{(l)}$$: se uma camada $$d^{(l)}$$, isso significa que uma camada $$l=3$$ possui $$d^{(l)}+1$$ nós que são rotulados $$0,1,...,d^{(l)}$$. Note que, na nossa representação, o nó 0 representa o viés daquele nó, e ele sempre possui como saída o valor 1, com nenhum valor de entrada no nó. 
 
 Para expandir nossa notação, agora olharemos uma relação entre dois nós:
 
-![](.\imagens\relacao_2_nos.png)
+![](./imagens/relacao_2_nos.png)
 
 Observe que o nó $$j$$ possui um sinal $$s$$ de entrada com uma saída $$x$$, baseado nisso nós criaremos dois vetores: o vetor $$\bold{s}^{(l)}$$ e o vetor $$\bold{x}^{(l)}$$. O primeiro vetor - $$\bold{s}^{(l)}$$ - será o vetor sinal, ele representa os sinais de entrada recebidos pelos nós $$1,2,...,d^{(l)}$$ da camada $$l$$ - lembre-se que o nó zero não possui nenhum sinal de entrada. Já o segundo vetor - $$\bold{x}^{(l)}$$ - representa as saídas dos neurônios $$0,1,2,...,d^{(l)}$$ da camada $$l$$. Desse modo, a entrada $$s_{j}^{(l)}$$ é o sinal de entrada do nó $$j$$ da camada $$l$$, enquanto $$x_{j}^{(l)}$$ é a saída do nó $$j$$ da camada $$l$$.
 
@@ -60,7 +60,7 @@ Com $$h(\bold{x})$$ sendo a saída do nosso modelo dada a entrada $$\bold{x}$$.
 
 ## Backpropagation
 
-O algorítmo backpropagation é uma forma eficiente de se computar o gradiente $$\nabla\bold{\mathcal{L}(w)}$$ de uma função de perda que uma rede neural possui. Com frequência utilizamos o erro quadrático médio:
+O algorítmo backpropagation é uma forma eficiente de se computar o gradiente ![](./imagens/nabla_L.png) de uma função de perda que uma rede neural possui. Com frequência utilizamos o erro quadrático médio:
 
 $$
     E_{in}(\bold{w}) = \frac{1}{N}\sum_{n=1}^{N}(h(\bold{x}_{n}^{(0)}) - y_{n})^{2}
@@ -125,7 +125,7 @@ $$
 Lembre-se que $$\frac{\partial e}{\partial \bold{s}_{j}^{(l)}} = \bold{\delta}_{j}^{(l)}$$, e que $$\frac{\partial e}{\partial w_{ij}^{(l)}} = \frac{\partial e}{\partial \bold{s}_{j}^{(l)}} . \frac{\partial \bold{s}_{j}^{(l)}}{\partial w_{ij}^{(l)}}$$. Logo:
 
 $$
-    \frac{\partial e}{\partial w_{ij}^{(l)}} = \bold{x}_{i}^{(l-1)} . \bold{\delta}_{j}^{(l)}
+    \frac{\partial e}{\partial w_{ij}^{(l)}} = \bold{x}_{i}^{(l-1)} \cdot \bold{\delta}_{j}^{(l)}
 $$
 
 Desse modo, finalmente:
@@ -151,27 +151,27 @@ $$
 Devido à regra da cadeia, podemos escrever:
 
 $$
-    \frac{\partial e}{\partial \bold{s}^{(l)}} = \frac{\partial e}{\partial \bold{x}^{(l)}} . \frac{\partial \bold{x}^{(l)}}{\partial \bold{s}^{(l)}}
+    \frac{\partial e}{\partial \bold{s}^{(l)}} = \frac{\partial e}{\partial \bold{x}^{(l)}} \cdot \frac{\partial \bold{x}^{(l)}}{\partial \bold{s}^{(l)}}
 $$
 
 $$
-    \bold{\delta}_{j}^{(l)} = \frac{\partial e}{\partial\bold{s}_{j}^{(l)}} = \frac{\partial e}{\partial \bold{x}_{j}^{(l)}} . \frac{\partial \bold{x}_{j}^{(l)}}{\partial\bold{s}_{j}^{(l)}}
+    \bold{\delta}_{j}^{(l)} = \frac{\partial e}{\partial\bold{s}_{j}^{(l)}} = \frac{\partial e}{\partial \bold{x}_{j}^{(l)}} \cdot \frac{\partial \bold{x}_{j}^{(l)}}{\partial\bold{s}_{j}^{(l)}}
 $$
 
 Visto que $$\bold{x}^{(l)}$$ é uma função de $$\bold{s}^{(l)}$$, podemos escrever:
 
-**(Comentário) Meninos, acho que teve um erro do Mostafa aqui. Ele escreve a seguinte sequência de equações:**
+<!-- **(Comentário) Meninos, acho que teve um erro do Mostafa aqui. Ele escreve a seguinte sequência de equações:** -->
 
 $$
     \frac{\partial \bold{x}_{j}^{(l)}}{\partial \bold{s}_{j}^{(l)}} = \sigma'(\bold{s}^{(l)}) \Longrightarrow \bold{\delta}_{j}^{(l)} = \frac{\partial e}{\partial \bold{x}_{j}^{(l)}} . \sigma'(\bold{s}^{(l)})
 $$
 
-**Creio que deveria ser:**
+<!-- **Creio que deveria ser:**
 $$
     \frac{\partial \bold{x}_{j}^{(l)}}{\partial \bold{s}_{j}^{(l)}} = \sigma'(\bold{s}_{j}^{(l)}) \Longrightarrow \bold{\delta}_{j}^{(l)} = \frac{\partial e}{\partial \bold{x}_{j}^{(l)}} . \sigma'(\bold{s}_{j}^{(l)})
-$$
+$$ -->
 
-**Me digam o que acham, por enquanto seguirei assumindo que o Mostafa estava correto**
+<!-- **Me digam o que acham, por enquanto seguirei assumindo que o Mostafa estava correto** -->
 
 Faz sentido dizer então que cada elemento de $$\bold{x}^{(l)}$$ influencia todos os elementos de $$s^{(l+1)}$$. Portanto, para obter a derivada que está faltando na equação acima, nós devemos levar em consideração todas essas influências:
 
@@ -193,7 +193,7 @@ $$
 
 Isso significa que $$\delta^{L}$$ é dependente da função de custo que a rede neural deseja minimizar. Tendo como exemplo a soma das diferença dos quadrados, isso é: $$e = (\bold{x}^{(L)} - y)^{2} = (\sigma(\bold{s}^{(L)}) - y)^{2}$$, temos:
 
-**Essas derivadas com vetores aqui tão certas?**
+<!-- **Essas derivadas com vetores aqui tão certas?** -->
 
 $$
     \bold{\delta}^{(L)} = \frac{\partial e}{\partial \bold{s}^{(L)}}
@@ -213,11 +213,11 @@ $$
 
 Em resumo, backpropagation é um algoritmo que computa os vetores de sensitividade após o forward propagation ter processado um ponto do conjunto de dados de treinamento. Você pode ver um exemplo do algoritmo na próxima imagem, o qual utiliza a soma dos quadrados como função de custo e a tangente hiperbólica como função de ativação:
 
-![](.\imagens\back_alg.png)
+![](./imagens/back_alg.png)
 
 Agora, com o forward propagation e o backpropagation, a rede neural consegue encontrar os gradientes:
 
-![](.\imagens\gradients_alg.png)
+![](./imagens/gradients_alg.png)
 
 Para atualizar os pesos para uma única iteração do gradiente descendente com learning rate fixo, basta fazer $$W^{(l)} \leftarrow W^{(l)} - \eta G^{(l)}$$, for $$l = 1,...,L$$. Existem diversos detalhes sobre como aperfeiçoar os algoritmos aqui mostrados, e nós os abordaremos em outros capítulos. Todavia, o que aqui foi mostrado é a base teórica de diversos modelos da área de aprendizado de máquina e, por ora, é o bastante.
 
