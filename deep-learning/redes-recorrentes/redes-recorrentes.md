@@ -22,7 +22,7 @@ Assim, precisamos construir um modelo semelhante ao anterior, porém capaz de re
 
 Como possível solução, podemos passar para nossa rede um vetor extra, chamado de **vetor de contexto**, que guardará informações sobre toda a sequência de tokens geradas até a última predição. Com isso, nosso modelo poderá construir frases bem mais elaboradas, já que poderá lembrar de mais informações, podendo lembrar de frases ou até mesmo parágrafos inteiros.
 
-Mais precisamente, teremos um conjunto de pesos para nosso vetor de contexto, um conjunto de pesos para atualizar o contexto à partir da entrada para nossa rede neural e um conjunto de pesos para realizar a predição da próxima token à partir do nosso vetor de contexto atual. Assim, considerando, respectivamente, $h, x, y$ como o vetor de contexto, a entrada e a saída da nossa rede, podemos escrever as equações:
+Mais precisamente, teremos um conjunto de pesos para nosso vetor de contexto, um conjunto de pesos para atualizar o contexto à partir da entrada para nossa rede neural e um conjunto de pesos para realizar a predição da próxima token à partir do nosso vetor de contexto atual. Assim, considerando, respectivamente, $ h, x, y $ como o vetor de contexto, a entrada e a saída da nossa rede, podemos escrever as equações:
 
 $$
 h_t = \sigma_h(W_x x_t + W_h h_{t - 1} + b_h)
@@ -31,7 +31,7 @@ $$
 y_t = \sigma_y(W_y h_t + b_y)
 $$
 
-Onde $\sigma_h$ e $\sigma_y$ representam funções de ativação da rede. Tais redes apresentam o nome de Redes Neurais Recorrentes (RNNs).
+Onde $ \sigma_h $ e $ \sigma_y $ representam funções de ativação da rede. Tais redes apresentam o nome de Redes Neurais Recorrentes (RNNs).
 
 ## Redes Neurais Recorrentes
 
