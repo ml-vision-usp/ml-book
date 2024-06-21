@@ -63,7 +63,7 @@
 
 [comment]: <> * [Camada convolucional](deep-learning/redes-convolucionais/camada-convolucional.md)
 [comment]: <> * [Camada de pooling](deep-learning/redes-convolucionais/camada-de-pooling.md)
-[Redes Recorrentes](deep-learning/redes-recorrentes/redes-recorrentes.md)
+* [Redes Recorrentes](deep-learning/redes-recorrentes/redes-recorrentes.md)
 [comment]: <> * [Attention](deep-learning/redes-recorrentes/attention.md)
 * [Transformers](deep-learning/transformers/README.md)
   * [Self-Attention](deep-learning/transformers/self-attention.md)
