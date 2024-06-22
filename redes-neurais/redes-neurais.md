@@ -8,7 +8,7 @@ Os **neurônios** são responsáveis por receberem entradas (inputs), realizarem
 
 ## Resumo
 
-Antes de adentrar cada passo do processo de modo mais detalhado, primeiro será apresentado um resumo de todo o processo. Desse modo o leitor terá um panorama geral prévio antes de começar a ver cada tópico.
+Antes de adentrar cada passo do processo de modo mais detalhado, primeiro será apresentado um resumo de todo o processo. Desse modo, teremos um panorama geral prévio antes de começar a ver cada tópico.
 
 Para começar, temos que saber que cada neurônio recebe como entrada uma soma ponderada pelos pesos e viéses sobre as saídas da camada anterior. O resultado dessa soma é então aplicada em uma **função de ativação**, com a saída dessa função sendo também a saída do neurônio. As funções de ativação são utilizadas nos neurônios para introduzir não-linearidade nas saídas das redes neurais. Algumas das funções comumente utilizadas são a sigmoide, a ReLU, e a tangente hiperbólica. A escolha da função de ativação pode afetar a performance do modelo.
 
@@ -22,13 +22,13 @@ Para realmente entender a teoria por trás das Redes Neurais nós precisamos pri
 
 ![](./imagens/exemplo_rede_neural.png)
 
-As camadas são rotuladas por $$l = 0,1,2, ..., L$$ e, como podemos ver, a camada $$l = 0$$ é a nossa camada de entrada - interessante dizer que, dependendo da fonte, a camada de entrada nem sempre é vista como uma camada por si só. Além disso, as camadas $$l = 1,2,...,L-1$$ são as chamadas camadas escondidas. Neste capítulo utilizaremos este $$\text{índice}^{(l)}$$ para fazer referência a uma camada em específico. Podemos dizer também que camadas possuem dimensões $$d^{(l)}$$: se uma camada $$d^{(l)}$$, isso significa que uma camada $$l=3$$ possui $$d^{(l)}+1$$ nós que são rotulados $$0,1,...,d^{(l)}$$. Note que, na nossa representação, o nó 0 representa o viés daquele nó, e ele sempre possui como saída o valor 1, com nenhum valor de entrada no nó. 
+As camadas são rotuladas por $$l = 0,1,2, ..., L$$ e, como podemos ver, a camada $$l = 0$$ é a nossa camada de entrada - interessante dizer que, dependendo da fonte, a camada de entrada nem sempre é vista como uma camada por si só. Além disso, as camadas $$l = 1,2,...,L-1$$ são as chamadas camadas escondidas. Neste capítulo utilizaremos este $$\text{índice}^{(l)}$$ para fazer referência a uma camada em específico. Podemos dizer também que camadas possuem dimensões $$d^{(l)}$$: se a camada $$l$$ possui dimensão $$d^{(l)}$$, isso significa que a camada $$l$$ possui $$d^{(l)}+1$$ nós que são rotulados $$0,1,...,d^{(l)}$$. Note que, na nossa representação, o nó 0 representa o viés daquele nó, e ele sempre possui como saída o valor 1, com nenhum valor de entrada no nó. 
 
 Para expandir nossa notação, agora olharemos uma relação entre dois nós:
 
 ![](./imagens/relacao_2_nos.png)
 
-Observe que o nó $$j$$ possui um sinal $$s$$ de entrada com uma saída $$x$$, baseado nisso nós criaremos dois vetores: o vetor $$\bold{s}^{(l)}$$ e o vetor $$\bold{x}^{(l)}$$. O primeiro vetor - $$\bold{s}^{(l)}$$ - será o vetor sinal, ele representa os sinais de entrada recebidos pelos nós $$1,2,...,d^{(l)}$$ da camada $$l$$ - lembre-se que o nó zero não possui nenhum sinal de entrada. Já o segundo vetor - $$\bold{x}^{(l)}$$ - representa as saídas dos neurônios $$0,1,2,...,d^{(l)}$$ da camada $$l$$. Desse modo, a entrada $$s_{j}^{(l)}$$ é o sinal de entrada do nó $$j$$ da camada $$l$$, enquanto $$x_{j}^{(l)}$$ é a saída do nó $$j$$ da camada $$l$$.
+Observe que o nó $$j$$ possui um sinal $$s$$ de entrada com uma saída $$x$$, baseado nisso nós criaremos dois vetores: o vetor $$\bold{s}^{(l)}$$ e o vetor $$\bold{x}^{(l)}$$. O primeiro vetor - $$\bold{s}^{(l)}$$ - será o vetor sinal, ele representa os sinais de entrada recebidos pelos nós $$1,2,...,d^{(l)}$$ da camada $$l$$ - lembre-se que o nó zero não possui nenhum sinal de entrada. Já o segundo vetor, $$\bold{x}^{(l)}$$, representa as saídas dos neurônios $$0,1,2,...,d^{(l)}$$ da camada $$l$$. Desse modo, a entrada $$s_{j}^{(l)}$$ é o sinal de entrada do nó $$j$$ da camada $$l$$, enquanto $$x_{j}^{(l)}$$ é a saída do nó $$j$$ da camada $$l$$.
 
 Também precisamos de uma representação para os pesos. Dado que há conexões ligando as saídas de todos os nós da camada $$l-1$$ às entradas da camada $$l$$, podemos construir uma matriz de pesos $$W^{(l)}$$ de dimensões $$(d^{(l-1)} + 1) \times d^{(l)}$$. Além disso, cada elemento $$w_{ij}^{(l)}$$ da matriz $$W^{(l)}$$ é o peso que conecta o nó $$i$$ da camada $$l-1$$ ao nó $$j$$ da camada $$l$$. Portanto, nosso conjunto de matrizes $$\bold{w} = \{W^{(1)}, W^{(2)}, W^{(3)},...,W^{(L)}\}$$ reúne os parâmetros do modelo.
 
@@ -80,7 +80,7 @@ $$
     \frac{\partial\mathcal{L}(\bold{w})}{\partial W^{l}} = \frac{1}{N}\sum_{n=1}^{N}\frac{\partial e_{n}}{\partial W^{(l)}}
 $$
 
-Estas são as derivadas parciais que desejamos encontrar. Para encontrá-las, a ideia é computar as derivadas parciais da camada $$l$$ utilizando as derivadas parciais encontradas para a partir da camada $$l+1$$. Para fazer isso, precisamos introduzir $$\delta^{(l)}$$, chamado vetor de 'sensibilidade':
+Estas são as derivadas parciais que desejamos encontrar. Para encontrá-las, a ideia é computar as derivadas parciais da camada $$l$$ utilizando as derivadas parciais encontradas para a partir da camada $$l+1$$. Para fazer isso, sendo $$e = (\bold{x}^{L}-y)^{2}$$, precisamos introduzir $$\delta^{(l)}$$, chamado vetor de **sensibilidade**:
 
 $$
     \delta^{(l)} = \frac{\partial e}{\partial \bold{s}^{(l)}} =
@@ -137,15 +137,15 @@ $$
 A formula para os vetores de sensibilidade utilizada no backpropagation é:
 
 $$
-    \bold{\delta}^{(l)} = \sigma'(\bold{s}^{(l)}) \otimes [W^{(l+1)}\bold{\delta}^{(l+1)}]_{1}^{d^{(l)}}
+    \bold{\delta}^{(l)} = \theta'(\bold{s}^{(l)}) \otimes [W^{(l+1)}\bold{\delta}^{(l+1)}]_{1}^{d^{(l)}}
 $$
 
-A $$\sigma'$$ é a derivada da função de ativação, o vetor $$[W^{(l+1)}\bold{\delta}^{(l+1)}]_{1}^{d^{(l)}}$$ contém os componentes do vetor $$W^{(l+1)}\bold{\delta}^{(l+1)}$$ (precisamos excluir o viés, que contém índice 0). O $$\otimes$$ é a notação para a multiplicação elemento a elemento, também conhecida como produto de Hadamard. 
+A $$\theta'$$ é a derivada da função de ativação, o vetor $$[W^{(l+1)}\bold{\delta}^{(l+1)}]_{1}^{d^{(l)}}$$ contém os componentes do vetor $$W^{(l+1)}\bold{\delta}^{(l+1)}$$ (precisamos excluir o viés, que contém índice 0). O $$\otimes$$ é a notação para a multiplicação elemento a elemento, também conhecida como produto de Hadamard. 
 
 Para entender a equação nós precisamos primeiro lembrar que:
 
 $$
-    e = e(\bold{x}^{(L)},y) = e(\sigma(\bold{s}^{(L)}),y)
+    e = e(\bold{x}^{(L)},y) = e(\theta(\bold{s}^{(L)}),y)
 $$
 
 Devido à regra da cadeia, podemos escrever:
@@ -162,14 +162,14 @@ Visto que $$\bold{x}^{(l)}$$ é uma função de $$\bold{s}^{(l)}$$, podemos escr
 
 <!-- **(Comentário) Meninos, acho que teve um erro do Mostafa aqui. Ele escreve a seguinte sequência de equações:** -->
 
-$$
-    \frac{\partial \bold{x}_{j}^{(l)}}{\partial \bold{s}_{j}^{(l)}} = \sigma'(\bold{s}^{(l)}) \Longrightarrow \bold{\delta}_{j}^{(l)} = \frac{\partial e}{\partial \bold{x}_{j}^{(l)}} . \sigma'(\bold{s}^{(l)})
-$$
+<!-- $$
+    \frac{\partial \bold{x}_{j}^{(l)}}{\partial \bold{s}_{j}^{(l)}} = \theta'(\bold{s}^{(l)}) \Longrightarrow \bold{\delta}_{j}^{(l)} = \frac{\partial e}{\partial \bold{x}_{j}^{(l)}} . \theta'(\bold{s}^{(l)})
+$$ -->
 
-<!-- **Creio que deveria ser:**
+
 $$
     \frac{\partial \bold{x}_{j}^{(l)}}{\partial \bold{s}_{j}^{(l)}} = \sigma'(\bold{s}_{j}^{(l)}) \Longrightarrow \bold{\delta}_{j}^{(l)} = \frac{\partial e}{\partial \bold{x}_{j}^{(l)}} . \sigma'(\bold{s}_{j}^{(l)})
-$$ -->
+$$
 
 <!-- **Me digam o que acham, por enquanto seguirei assumindo que o Mostafa estava correto** -->
 
@@ -182,7 +182,7 @@ $$
 Finalmente, agora podemos encontrar a fórmula para as sensitividades:
 
 $$
-    \bold{\delta}_{j}^{(l)} = \sigma'(\bold{s}^{(l)}) . \sum_{k=1}^{d^{(l+1)}}\bold{\delta}_{k}^{(l+1)} . w_{jk}^{(l+1)}
+    \bold{\delta}_{j}^{(l)} = \theta'(\bold{s}^{(l)}) . \sum_{k=1}^{d^{(l+1)}}\bold{\delta}_{k}^{(l+1)} . w_{jk}^{(l+1)}
 $$
 
 Agora nós encontramos uma forma de computar $$\delta^{(l)}$$ a partir de $$\delta^{(l+1)}$$. Isso significa que, para encontrar todas as sensitividades, basta encontrarmos primeiro $$\delta^{(L)}$$:
@@ -191,7 +191,7 @@ $$
     \bold{\delta}^{(L)} = \frac{\partial e}{\partial \bold{s}^{(L)}} = \frac{e(\bold{x}^{(L)}, y)}{\partial \bold{s}^{(L)}}
 $$
 
-Isso significa que $$\delta^{L}$$ é dependente da função de custo que a rede neural deseja minimizar. Tendo como exemplo a soma das diferença dos quadrados, isso é: $$e = (\bold{x}^{(L)} - y)^{2} = (\sigma(\bold{s}^{(L)}) - y)^{2}$$, temos:
+Isso significa que $$\delta^{L}$$ é dependente da função de custo que a rede neural deseja minimizar. Tendo como exemplo a soma das diferença dos quadrados, isso é: $$e = (\bold{x}^{(L)} - y)^{2} = (\theta(\bold{s}^{(L)}) - y)^{2}$$, temos:
 
 <!-- **Essas derivadas com vetores aqui tão certas?** -->
 
@@ -208,7 +208,7 @@ $$
 $$
 
 $$
-    \bold{\delta}^{(L)} = 2(\mathbf{x}^{(L)} - y)\sigma'(\mathbf{s}^{(L)})
+    \bold{\delta}^{(L)} = 2(\mathbf{x}^{(L)} - y)\theta'(\mathbf{s}^{(L)})
 $$
 
 Em resumo, backpropagation é um algoritmo que computa os vetores de sensitividade após o forward propagation ter processado um ponto do conjunto de dados de treinamento. Você pode ver um exemplo do algoritmo na próxima imagem, o qual utiliza a soma dos quadrados como função de custo e a tangente hiperbólica como função de ativação:
@@ -219,7 +219,7 @@ Agora, com o forward propagation e o backpropagation, a rede neural consegue enc
 
 ![](./imagens/gradients_alg.png)
 
-Para atualizar os pesos para uma única iteração do gradiente descendente com learning rate fixo, basta fazer $$W^{(l)} \leftarrow W^{(l)} - \eta G^{(l)}$$, for $$l = 1,...,L$$. Existem diversos detalhes sobre como aperfeiçoar os algoritmos aqui mostrados, e nós os abordaremos em outros capítulos. Todavia, o que aqui foi mostrado é a base teórica de diversos modelos da área de aprendizado de máquina e, por ora, é o bastante.
+Para atualizar os pesos para uma única iteração do gradiente descendente com learning rate fixo, basta fazer $$W^{(l)} \leftarrow W^{(l)} - \eta G^{(l)}$$, para $$l = 1,...,L$$. Existem diversos detalhes sobre como aperfeiçoar os algoritmos aqui mostrados, e nós os abordaremos em outros capítulos. Todavia, o que aqui foi mostrado é a base teórica de diversos modelos da área de aprendizado de máquina e, por ora, é o bastante.
 
 ## Contribuições
 
