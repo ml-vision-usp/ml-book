@@ -28,7 +28,7 @@ Para expandir nossa notação, agora olharemos uma relação entre dois nós:
 
 ![](./imagens/relacao_2_nos.png)
 
-Observe que o nó $$j$$ possui um sinal $$s$$ de entrada com uma saída $$x$$, baseado nisso nós criaremos dois vetores: o vetor $$\bold{s}^{(l)}$$ e o vetor $$\bold{x}^{(l)}$$. O primeiro vetor - $$\bold{s}^{(l)}$$ - será o vetor sinal, ele representa os sinais de entrada recebidos pelos nós $$1,2,...,d^{(l)}$$ da camada $$l$$ - lembre-se que o nó zero não possui nenhum sinal de entrada. Já o segundo vetor, $$\bold{x}^{(l)}$$, representa as saídas dos neurônios $$0,1,2,...,d^{(l)}$$ da camada $$l$$. Desse modo, a entrada $$s_{j}^{(l)}$$ é o sinal de entrada do nó $$j$$ da camada $$l$$, enquanto $$x_{j}^{(l)}$$ é a saída do nó $$j$$ da camada $$l$$.
+Observe que o nó $$j$$ possui um sinal $$s$$ de entrada com uma saída $$x$$, baseado nisso nós criaremos dois vetores: o vetor $$\bold{s}^{(l)}$$ e o vetor $$\bold{x}^{(l)}$$. O primeiro vetor, $$\bold{s}^{(l)}$$, será o vetor sinal, ele representa os sinais de entrada recebidos pelos nós $$1,2,...,d^{(l)}$$ da camada $$l$$ - lembre-se que o nó de índice zero de cada camada não possui nenhum sinal de entrada. Já o segundo vetor, $$\bold{x}^{(l)}$$, representa as saídas dos neurônios $$0,1,2,...,d^{(l)}$$ da camada $$l$$. Desse modo, a entrada $$s_{j}^{(l)}$$ é o sinal de entrada do nó $$j$$ da camada $$l$$, enquanto $$x_{j}^{(l)}$$ é a saída do nó $$j$$ da camada $$l$$.
 
 Também precisamos de uma representação para os pesos. Dado que há conexões ligando as saídas de todos os nós da camada $$l-1$$ às entradas da camada $$l$$, podemos construir uma matriz de pesos $$W^{(l)}$$ de dimensões $$(d^{(l-1)} + 1) \times d^{(l)}$$. Além disso, cada elemento $$w_{ij}^{(l)}$$ da matriz $$W^{(l)}$$ é o peso que conecta o nó $$i$$ da camada $$l-1$$ ao nó $$j$$ da camada $$l$$. Portanto, nosso conjunto de matrizes $$\bold{w} = \{W^{(1)}, W^{(2)}, W^{(3)},...,W^{(L)}\}$$ reúne os parâmetros do modelo.
 
@@ -77,7 +77,7 @@ $$
 Para computar o gradiente de $$E_{in}$$, precisamos de suas derivadas parciais com respeito a cada matriz de pesos:
 
 $$
-    \frac{\partial\mathcal{L}(\bold{w})}{\partial W^{l}} = \frac{1}{N}\sum_{n=1}^{N}\frac{\partial e_{n}}{\partial W^{(l)}}
+    \frac{\partial\mathcal{L}(\bold{w})}{\partial W^{(l)}} = \frac{1}{N}\sum_{n=1}^{N}\frac{\partial e_{n}}{\partial W^{(l)}}
 $$
 
 Estas são as derivadas parciais que desejamos encontrar. Para encontrá-las, a ideia é computar as derivadas parciais da camada $$l$$ utilizando as derivadas parciais encontradas para a partir da camada $$l+1$$. Para fazer isso, sendo $$e = (\bold{x}^{L}-y)^{2}$$, precisamos introduzir $$\delta^{(l)}$$, chamado vetor de **sensibilidade**:
