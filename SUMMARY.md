@@ -53,12 +53,10 @@
 [comment]: <> * [Aprendizado por reforço](tipos-de-aprendizado/aprendizado-por-reforco.md)
 [comment]: <> * [Aprendizado auto-supervisionado](tipos-de-aprendizado/aprendizado-auto-supervisionado.md)
 
-[comment]: <> ## REDES NEURAIS
+## REDES NEURAIS
 
 [comment]: <> * [Multilayer Perceptron](redes-neurais/multilayer-perceptron.md)
-[comment]: <> * [Forward propagation](redes-neurais/forward-propagation.md)
-[comment]: <> * [Backpropagation](redes-neurais/backpropagation.md)
-[comment]: <> * [Feedforward Neural Network](redes-neurais/feedforward-neural-network.md)
+* [Redes Neurais](redes-neurais/redes-neurais.md)
 
 ## DEEP LEARNING
 
