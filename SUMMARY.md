@@ -55,7 +55,7 @@
 
 ## REDES NEURAIS
 
-[comment]: <> * [Multilayer Perceptron](redes-neurais/multilayer-perceptron.md)
+* [Multilayer Perceptron](redes-neurais/multilayer-perceptron.md)
 * [Redes Neurais](redes-neurais/redes-neurais.md)
 
 ## DEEP LEARNING
