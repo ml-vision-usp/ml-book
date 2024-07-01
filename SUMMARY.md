@@ -57,10 +57,11 @@
 
 [comment]: <> * [Multilayer Perceptron](redes-neurais/multilayer-perceptron.md)
 * [Redes Neurais](redes-neurais/redes-neurais.md)
-
+* [Camada convolucional](redes-neurais/camada-convolucional.md)
+* [Rede convolucional](redes-neurais/rede-convolucional.md)
 ## DEEP LEARNING
 
-* [Camada convolucional](deep-learning/redes-convolucionais/camada-convolucional.md)
+
 [comment]: <> * [Camada de pooling](deep-learning/redes-convolucionais/camada-de-pooling.md)
 [comment]: <> * [Redes Recorrentes](deep-learning/redes-recorrentes/README.md)
 [comment]: <> * [Attention](deep-learning/redes-recorrentes/attention.md)
