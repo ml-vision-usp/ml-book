@@ -1,2 +1,0 @@
-# Camada convolucional
-
